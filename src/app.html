@@ -5,11 +5,48 @@
 		<meta charset="utf-8" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
 		%sveltekit.head%
 	</head>
 
 	<body data-sveltekit-preload-data="hover">
+		<div id="particles-js" class="absolute -z-1 h-screen w-full bg-muted"></div>
 		<div style="display: contents">%sveltekit.body%</div>
 	</body>
+	<script>
+		particlesJS('particles-js', {
+			particles: {
+				number: { value: 80, density: { enable: true, value_area: 800 } },
+				color: { value: '#ff2e2e' } /* Primary Red */,
+				shape: { type: 'circle' },
+				opacity: { value: 0.8, random: true },
+				size: { value: 3, random: true },
+				line_linked: {
+					enable: true,
+					distance: 150,
+					color: '#000000',
+					opacity: 0.2 /* Subtle grey lines */,
+					width: 1
+				},
+				move: {
+					enable: true,
+					speed: 2 /* Slow floating movement */,
+					direction: 'none',
+					random: false,
+					straight: false,
+					out_mode: 'out',
+					bounce: false
+				}
+			},
+			interactivity: {
+				detect_on: 'canvas',
+				events: {
+					onhover: { enable: true, mode: 'repulse' } /* Particles push away on mouse hover */,
+					onclick: { enable: true, mode: 'push' }
+				}
+			},
+			retina_detect: true
+		});
+	</script>
 </html>
