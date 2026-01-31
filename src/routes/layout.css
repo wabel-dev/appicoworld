@@ -3,14 +3,6 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@font-face {
-	font-family: 'Gunken';
-	font-style: normal;
-	font-weight: normal;
-	font-display: swap;
-	src: url('src/lib/assets/Gunken.otf') format('opentype');
-}
-
 :root {
 	--background: oklch(0.8902 0.0026 345.2197);
 	--foreground: oklch(0 0 0);
