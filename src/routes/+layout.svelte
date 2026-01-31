@@ -27,6 +27,6 @@
 		font-style: normal;
 		font-weight: normal;
 		font-display: swap;
-		src: url('src/lib/assets/Gunken.otf') format('opentype');
+		src: url('$lib/assets/Gunken.otf') format('opentype');
 	}
 </style>
