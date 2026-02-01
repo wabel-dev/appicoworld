@@ -9,7 +9,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>Appico World</title>
+	<title>Appico World (dev)</title>
 </svelte:head>
 
 {@render children()}
@@ -21,12 +21,4 @@
 	{/each}
 </div>
 
-<style>
-	@font-face {
-		font-family: 'Gunken';
-		font-style: normal;
-		font-weight: normal;
-		font-display: swap;
-		src: url('$lib/assets/Gunken.otf') format('opentype');
-	}
-</style>
+

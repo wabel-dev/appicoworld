@@ -3,6 +3,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@font-face {
+	font-family: 'Gunken';
+	src: url('$lib/assets/Gunken.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
 :root {
 	--background: oklch(0.8902 0.0026 345.2197);
 	--foreground: oklch(0 0 0);
@@ -115,16 +122,17 @@
 	--color-sidebar-border: var(--sidebar-border);
 	--color-sidebar-ring: var(--sidebar-ring);
 
-	/* Custom Font mapping */
-	--font-gunken: 'Gunken', sans-serif;
+	--font-gunken: 'Gunken', system-ui, sans-serif;
 }
 
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
-		font-family: var(--font-gunken); /* Use the mapped theme variable  */
 	}
 	body {
 		@apply bg-background text-foreground;
 	}
 }
+/* body {
+	font-family: 'Gunken', system-ui, sans-serif;
+} */

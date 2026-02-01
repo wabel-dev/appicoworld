@@ -181,6 +181,13 @@
 		transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
 		clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
 	}
+	@font-face {
+		font-family: 'Gunken';
+		font-style: normal;
+		font-weight: normal;
+		font-display: swap;
+		src: url('$lib/assets/Gunken.otf') format('opentype');
+	}
 
 	/* .btn-future:hover {
 		background-color: hsl(var(--primary));
