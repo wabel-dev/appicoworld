@@ -24,7 +24,7 @@
 	};
 </script>
 
-<div
+<span
 	use:inview={{
 		unobserveOnEnter: false,
 		rootMargin: '-50px'
@@ -34,4 +34,4 @@
 	{...rest}
 >
 	{num.current.toFixed(1)}
-</div>
+</span>

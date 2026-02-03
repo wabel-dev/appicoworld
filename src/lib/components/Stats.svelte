@@ -1,13 +1,14 @@
 <script lang="ts">
 	import NumberTicker from './magic-ui/NumberTicker.svelte';
 	import { Separator } from '$lib/components/ui/separator/index.js';
+	import { m } from '$lib/paraglide/messages';
 	const foundingYear = 2016;
 	const yearsOfExperience = new Date().getFullYear() - foundingYear;
 </script>
 
 <section class="relative overflow-hidden px-4 py-12" aria-labelledby="stats-title">
 	<h2 id="stats-title" class="mb-10 text-center text-3xl font-bold tracking-tight text-foreground">
-		Trusted by Syria's Leading Industries
+		{m.small_suave_crab_cook()}
 	</h2>
 
 	<div
@@ -19,7 +20,7 @@
 				<NumberTicker value={yearsOfExperience} />+
 			</p>
 			<p class="mt-2 text-xs font-semibold tracking-[2px] text-muted-foreground uppercase">
-				Years in Syrian Market
+				{m.moving_quaint_donkey_zap()}
 			</p>
 		</div>
 
@@ -31,7 +32,7 @@
 				<NumberTicker value={50} />+
 			</p>
 			<p class="mt-2 text-xs font-semibold tracking-[2px] text-muted-foreground uppercase">
-				International Suppliers
+				I{m.awful_witty_stingray_agree()}
 			</p>
 		</div>
 
@@ -43,9 +44,9 @@
 				<NumberTicker value={85} />%
 			</p>
 			<p class="mt-2 text-xs font-semibold tracking-[2px] text-muted-foreground uppercase">
-				Market Coverage
+				{m.happy_maroon_kudu_pinch()}
 			</p>
-			<p class="mt-1 text-xs text-muted-foreground/70">of major Syrian manufacturers</p>
+			<p class="mt-1 text-xs text-muted-foreground/70">{m.house_dull_dachshund_embrace()}</p>
 		</div>
 
 		<Separator orientation="vertical" class="hidden h-12 md:block" />
@@ -56,9 +57,9 @@
 				<NumberTicker value={99} />%
 			</p>
 			<p class="mt-2 text-xs font-semibold tracking-[2px] text-muted-foreground uppercase">
-				Import Success Rate
+				{m.ago_honest_kitten_cuddle()}
 			</p>
-			<p class="mt-1 text-xs text-muted-foreground/70">customs clearance & delivery</p>
+			<p class="mt-1 text-xs text-muted-foreground/70">{m.ornate_weird_bear_affirm()}</p>
 		</div>
 	</div>
 </section>

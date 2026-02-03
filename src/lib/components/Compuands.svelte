@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { Progress } from '$lib/components/ui/progress/index.js';
+	import { m } from '$lib/paraglide/messages';
+	import { getLocale } from '$lib/paraglide/runtime';
 	import { inview } from 'svelte-inview';
 	import { cubicOut } from 'svelte/easing';
 	import { Tween } from 'svelte/motion';
@@ -24,6 +26,29 @@
 			formula: '03 // AGENCY',
 			name: 'Global Agencies',
 			desc: 'Exclusive commercial representation for top-tier international suppliers.',
+			target: 80,
+			suppliers: 10
+		}
+	];
+	const compoundsArabic = [
+		{
+			formula: '01 // FOOD',
+			name: 'مكونات الأغذية',
+			desc: 'إضافات ومواد حافظة ونكهات عالية الجودة مخصصة للتصنيع الغذائي الصناعي.',
+			target: 75, // موثوقية سلسلة التوريد
+			suppliers: 40
+		},
+		{
+			formula: '02 // SCENT',
+			name: 'العطريات والإسترات',
+			desc: 'مركبات اصطناعية وزيوت فاخرة مخصصة لصناعة العطور الراقية.',
+			target: 90,
+			suppliers: 25
+		},
+		{
+			formula: '03 // AGENCY',
+			name: 'الوكالات العالمية',
+			desc: 'تمثيل تجاري حصري لنخبة من الموردين الدوليين الرائدين.',
 			target: 80,
 			suppliers: 10
 		}
@@ -61,31 +86,53 @@
 	}}
 	oninview_change={handleChange}
 >
-	<div class="mb-12 space-y-2 text-center md:text-left">
-		<h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Expertise</h2>
+	<div class="mb-12 space-y-2 text-center ltr:md:text-left rtl:md:text-right">
+		<h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+			{m.crisp_stale_dachshund_succeed()}
+		</h2>
 		<p class="text-muted-foreground">
-			Bridging the gap between global manufacturers and local industry requirements.
+			{m.known_honest_florian_yell()}
 		</p>
 	</div>
 
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-		{#each compounds as item, i}
-			<div
-				class="group clip-card relative overflow-hidden border border-border bg-card p-6 transition-all duration-300 hover:border-primary hover:bg-primary/5"
-			>
-				<div class="mb-2 font-mono text-sm font-medium text-primary opacity-80">
-					{item.formula}
-				</div>
-				<h3 class="mb-1 text-lg font-semibold text-card-foreground">
-					{item.name}
-				</h3>
-				<p class="mb-4 text-sm text-muted-foreground">
-					{item.desc}
-				</p>
+		{#if getLocale() === 'ar'}
+			{#each compoundsArabic as item, i}
+				<div
+					class="group clip-card relative overflow-hidden border border-border bg-card p-6 transition-all duration-300 hover:border-primary hover:bg-primary/5"
+				>
+					<div class="mb-2 font-mono text-sm font-medium text-primary opacity-80">
+						{item.formula}
+					</div>
+					<h3 class="mb-1 text-lg font-semibold text-card-foreground">
+						{item.name}
+					</h3>
+					<p class="mb-4 text-sm text-muted-foreground">
+						{item.desc}
+					</p>
 
-				<Progress value={progressTweens[i].current} class="h-0.5" />
-			</div>
-		{/each}
+					<Progress value={progressTweens[i].current} class="h-0.5 rtl:rotate-180" />
+				</div>
+			{/each}
+		{:else}
+			{#each compounds as item, i}
+				<div
+					class="group clip-card relative overflow-hidden border border-border bg-card p-6 transition-all duration-300 hover:border-primary hover:bg-primary/5"
+				>
+					<div class="mb-2 font-mono text-sm font-medium text-primary opacity-80">
+						{item.formula}
+					</div>
+					<h3 class="mb-1 text-lg font-semibold text-card-foreground">
+						{item.name}
+					</h3>
+					<p class="mb-4 text-sm text-muted-foreground">
+						{item.desc}
+					</p>
+
+					<Progress value={progressTweens[i].current} class="h-0.5" />
+				</div>
+			{/each}
+		{/if}
 	</div>
 </section>
 

@@ -4,6 +4,8 @@
 
 	import { Menu } from '@lucide/svelte';
 	import logo from '$lib/assets/appico_logo.webp';
+	import { m } from '$lib/paraglide/messages';
+	import { localizeHref } from '$lib/paraglide/runtime';
 
 	// Svelte 5 Runes: Define props
 	let { links = [] }: { links: { href: string; label: string }[] } = $props();
@@ -51,7 +53,9 @@
 
 			<hr class="border-border" />
 
-			<Button class="w-full" onclick={() => (open = false)}>Contact Us</Button>
+			<Button class="w-full" onclick={() => (open = false)} href={localizeHref('/#contact')}
+				>{m.topical_red_panther_win()}</Button
+			>
 		</nav>
 	</Sheet.Content>
 </Sheet.Root>

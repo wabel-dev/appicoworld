@@ -1,148 +1,159 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button/index.js';
-
+	import { untrack } from 'svelte';
+	import { superForm } from 'sveltekit-superforms';
+	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import { gsap } from 'gsap';
-
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+	// UI Components
 	import * as Card from '$lib/components/ui/card/index.js';
-
-	import Stats from '$lib/components/Stats.svelte';
+	import * as Field from '$lib/components/ui/field';
+	import * as Select from '$lib/components/ui/select';
+	import { Button } from '$lib/components/ui/button/index.js';
+	import { Input } from '$lib/components/ui/input/index.js';
+	import { Textarea } from '$lib/components/ui/textarea';
 	import Compuands from '$lib/components/Compuands.svelte';
+	import Stats from '$lib/components/Stats.svelte';
+
+	// Logic & Types
+	import { schema } from '$lib/schema';
 	import { IsMobile } from '$lib/hooks/is-mobile.svelte';
 	import { getLocale } from '$lib/paraglide/runtime';
+	import type { PageData } from './$types';
+	import { fade } from 'svelte/transition';
+	import { Loader } from '@lucide/svelte';
+	import { m } from '$lib/paraglide/messages';
 
-	let herotitle: HTMLElement | null = $state(null);
+	// Props & State
+	let { data }: { data: PageData } = $props();
+	let herotitle = $state<HTMLElement | null>(null);
+	let herosubtitle = $state<HTMLElement | null>(null);
 
-	let herosubtitle: HTMLElement | null = $state(null);
+	const locale = $derived(getLocale());
+	const input_class =
+		'w-full border border-border bg-card p-4 transition-all outline-none focus:border-primary';
 
-	const services = [
-		{
-			number: '01',
-			title: 'Food Raw Materials',
-			description:
-				'We supply high-grade additives, flavors, preservatives, and essential ingredients for large-scale food processing and industrial manufacturing.'
-		},
-		{
-			number: '02',
-			title: 'Aromatics & Esters',
-			description:
-				'Importing premium oils, synthetic compounds, and active cosmetic ingredients. We represent top-tier global perfumery houses.'
-		},
-		{
-			number: '03',
-			title: 'Global Representation',
-			description:
-				'We act as the exclusive commercial agent for international suppliers, handling all import/export logistics and trade compliance.'
-		}
-	];
-	const services_ar = [
-		{
-			number: '01',
-			title: 'Food Industry Raw Materials',
-			description:
-				"We represent global suppliers of food additives, preservatives, flavor enhancers, stabilizers, and specialty ingredients for Syria's food manufacturing sector."
-		},
-		{
-			number: '02',
-			title: 'Synthetic Fragrance Compounds',
-			description:
-				'Exclusive representation of international manufacturers of aroma chemicals, essential oil alternatives, and fragrance ingredients for perfumery and cosmetics.'
-		},
-		{
-			number: '03',
-			title: 'Import & Customs Facilitation',
-			description:
-				'End-to-end import management including documentation, customs clearance, and Syrian Standardization & Metrology Organization (SASMO) compliance.'
-		}
-	];
+	// Form Initialization
 
+	const {
+		form: formData,
+		errors,
+		enhance,
+		message,
+		delayed
+	} = superForm(
+		untrack(() => data.form),
+		{ validators: zod4Client(schema) }
+	);
+
+	// Data - Derived based on locale
+	const servicesData = {
+		en: [
+			{
+				number: '01',
+				title: 'Food Raw Materials',
+				description:
+					'We supply high-grade additives, flavors, preservatives, and essential ingredients.'
+			},
+			{
+				number: '02',
+				title: 'Aromatics & Esters',
+				description: 'Importing premium oils, synthetic compounds, and active cosmetic ingredients.'
+			},
+			{
+				number: '03',
+				title: 'Global Representation',
+				description: 'We act as the exclusive commercial agent for international suppliers.'
+			}
+		],
+		ar: [
+			{
+				number: '01',
+				title: 'المواد الخام الغذائية',
+				description:
+					'نورّد أجود أنواع المضافات الغذائية، النكهات، المواد الحافظة، والمكونات الأساسية.'
+			},
+			{
+				number: '02',
+				title: 'العطور والإسترات',
+				description: 'استيراد الزيوت الفاخرة، المركبات الصناعية، والمكونات التجميلية الفعالة.'
+			},
+			{
+				number: '03',
+				title: 'التمثيل التجاري العالمي',
+				description: 'نعمل كوكيل تجاري حصري للموردين الدوليين في السوق المحلية.'
+			}
+		]
+	};
+
+	// Animations
 	$effect(() => {
 		if (!herotitle || !herosubtitle) return;
 
 		gsap.registerPlugin(ScrollTrigger);
 
-		// Create animations and store references for cleanup
-
-		const heroTitleAnimation = gsap.from(herotitle, {
-			y: 50,
-
-			opacity: 0,
-
-			duration: 1,
-
-			ease: 'power3.out',
-
-			skewY: 5,
-
-			scrollTrigger: {
-				trigger: herotitle,
-
-				start: 'top 85%',
-
-				end: 'bottom 15%',
-
-				toggleActions: 'play reverse play reverse'
-			}
-		});
-
-		const heroSubtitleAnimation = gsap.from(herosubtitle, {
-			y: 30,
-
-			opacity: 0,
-
-			duration: 0.8,
-
-			delay: 0.5,
-
-			scrollTrigger: {
-				trigger: herosubtitle,
-
-				start: 'top 85%',
-
-				end: 'bottom 15%',
-
-				toggleActions: 'play reverse play reverse'
-			}
-		});
-
-		// Card animations - store all animations
-
-		const cardAnimations = gsap.utils.toArray('.card').map((card) => {
-			return gsap.from(card as HTMLElement, {
+		// Use gsap.context for easy cleanup
+		const ctx = gsap.context(() => {
+			// Hero Animations
+			gsap.from(herotitle, {
 				y: 50,
 				opacity: 0,
-				duration: 0.8,
-				ease: 'power2.out',
+				duration: 1,
+				ease: 'power3.out',
+				skewY: 5,
 				scrollTrigger: {
-					trigger: card as HTMLElement,
-
-					start: IsMobile ? 'top 92%' : 'top 85%',
-					toggleActions: 'play none none reverse'
-					// Optional: If you want cards to stagger only when they are side-by-side
-					// invalidateOnRefresh: true,
+					trigger: herotitle,
+					start: 'top 85%',
+					toggleActions: 'play reverse play reverse'
 				}
+			});
+
+			gsap.from(herosubtitle, {
+				y: 30,
+				opacity: 0,
+				duration: 0.8,
+				delay: 0.2, // Reduced delay for better feel
+				scrollTrigger: {
+					trigger: herosubtitle,
+					start: 'top 85%',
+					toggleActions: 'play reverse play reverse'
+				}
+			});
+
+			// Batch Card Animations
+			gsap.utils.toArray('.card').forEach((card) => {
+				gsap.from(card as HTMLElement, {
+					y: 50,
+					opacity: 0,
+					duration: 0.8,
+					ease: 'power2.out',
+					scrollTrigger: {
+						trigger: card as HTMLElement,
+						start: IsMobile ? 'top 92%' : 'top 85%',
+						toggleActions: 'play none none reverse'
+					}
+				});
 			});
 		});
 
-		// Cleanup function
-
-		return () => {
-			// Kill individual animations
-
-			heroTitleAnimation.kill();
-
-			heroSubtitleAnimation.kill();
-
-			cardAnimations.forEach((anim) => anim.kill());
-
-			// Kill all associated ScrollTriggers
-
-			ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-		};
+		return () => ctx.revert(); // Cleans up all animations and ScrollTriggers in one go
 	});
 </script>
 
+{#if $delayed}
+	<div
+		transition:fade={{ duration: 150 }}
+		class="fixed inset-0 z-9999 flex flex-col items-center justify-center bg-background/80 backdrop-blur-sm"
+	>
+		<Loader class="w-10 animate-spin text-primary" />
+
+		<span
+			class="mt-4 animate-pulse font-gunken text-sm font-bold tracking-widest text-primary uppercase"
+		>
+			{m.loading()}
+		</span>
+	</div>
+{/if}
 <header
 	class="relative flex h-screen items-center justify-center overflow-hidden px-5 text-center"
 	id="hero"
@@ -152,18 +163,19 @@
 			class="hero-title font-orbitron mb-5 text-5xl leading-tight uppercase md:text-7xl"
 			bind:this={herotitle}
 		>
-			Innovating for<br /><span class="text-primary">Every Industry</span>
+			{m.tired_ornate_fox_soar()}<br /><span class="text-primary"
+				>{m.less_spry_nuthatch_borrow()}</span
+			>
 		</h1>
 
 		<p
 			class="hero-subtitle mb-10 text-xl tracking-wide text-muted-foreground md:text-2xl"
 			bind:this={herosubtitle}
 		>
-			Syria's premier representative for international suppliers of food industry raw materials and
-			synthetic fragrances compounds.
+			{m.dizzy_key_mule_transform()}
 		</p>
 
-		<Button>Explore Catalog</Button>
+		<Button href="#compounds">{m.mild_vivid_seal_support()}</Button>
 	</div>
 
 	<div id="particle-container" class="pointer-events-none absolute inset-0"></div>
@@ -171,15 +183,15 @@
 
 <section class="relative bg-background px-6 py-16 md:px-12 md:py-24" id="services">
 	<div class="mb-12 border-l-4 border-primary pl-5 md:mb-16">
-		<h2 class="font-orbitron text-3xl uppercase md:text-4xl">Our Representation Services</h2>
+		<h2 class="font-orbitron text-3xl uppercase md:text-4xl">{m.front_teary_florian_spur()}</h2>
 		<p class="mt-2 text-sm text-muted-foreground md:text-base">
-			Connecting Syrian industries with world-class suppliers since 2016.
+			{m.due_free_kangaroo_kiss()}
 		</p>
 	</div>
 
 	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
 		{#if getLocale() === 'ar'}
-			{#each services_ar as service, index}
+			{#each servicesData.ar as service, index}
 				<Card.Root
 					class="card flex h-full flex-col {index === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}"
 				>
@@ -197,7 +209,7 @@
 				</Card.Root>
 			{/each}
 		{:else}
-			{#each services as service, index}
+			{#each servicesData.en as service, index}
 				<Card.Root
 					class="card flex h-full flex-col {index === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}"
 				>
@@ -219,43 +231,108 @@
 </section>
 <Stats />
 <Compuands />
-<section class="flex justify-center bg-accent/5 px-12 py-24" id="contact">
-	<div class="grid w-full max-w-5xl grid-cols-1 gap-12 md:grid-cols-2">
-		<div>
-			<h2 class="font-orbitron mb-5 text-5xl uppercase">Initiate Protocol</h2>
-
-			<p class="mb-8 text-muted-foreground">
+<section class="flex justify-center bg-accent/5 px-6 py-16 md:px-12 md:py-24" id="contact">
+	<div class="grid w-full max-w-5xl grid-cols-1 gap-12 lg:grid-cols-5">
+		<div class="lg:col-span-2">
+			<h2 class="font-orbitron mb-4 text-4xl tracking-wider uppercase md:text-5xl">
+				Initiate Protocol
+			</h2>
+			<p class="mb-6 text-muted-foreground">
 				Ready to upgrade your supply chain? Send us a transmission.
 			</p>
-
-			<div class="space-y-2">
-				<p><strong>HQ:</strong> Neo-Paris, Sector 7</p>
-
-				<p><strong>Email:</strong> link@aether-fragrance.com</p>
+			<div class="space-y-1 text-sm">
+				<p><span class="font-bold text-primary">HQ:</span> Neo-Paris, Sector 7</p>
+				<p><span class="font-bold text-primary">EMAIL:</span> link@aether-fragrance.com</p>
 			</div>
+
+			{#if $message}
+				<div class="mt-6 animate-pulse border-l-2 border-primary bg-primary/10 p-4">
+					<p class="text-xs font-bold text-primary uppercase">System Status</p>
+					<p class="text-sm text-muted-foreground">{$message}</p>
+				</div>
+			{/if}
 		</div>
 
-		<form id="contactForm" class="flex flex-col gap-5">
-			<input
-				type="text"
-				placeholder="Entity Name"
-				class="w-full border border-border bg-card p-4 transition-all outline-none focus:border-primary"
-				required
-			/>
+		<form method="POST" use:enhance class="lg:col-span-3" autocomplete="on">
+			<div class="grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2">
+				<Field.Field class="space-y-1">
+					<Field.Label class="text-xs uppercase">Name</Field.Label>
+					<Input
+						type="text"
+						name="name"
+						placeholder="John Doe"
+						class={input_class}
+						bind:value={$formData.name}
+						autocomplete="name"
+					/>
+					{#if $errors.name}<Field.Error class="text-[10px]">{$errors.name}</Field.Error>{/if}
+				</Field.Field>
 
-			<input
-				type="email"
-				placeholder="Digital Address"
-				class="w-full border border-border bg-card p-4 transition-all outline-none focus:border-primary"
-				required
-			/>
+				<Field.Field class="space-y-1">
+					<Field.Label class="text-xs uppercase">Company</Field.Label>
+					<Input
+						type="text"
+						name="company"
+						placeholder="Global Foods Ltd."
+						class={input_class}
+						bind:value={$formData.company}
+						autocomplete="organization"
+					/>
+					{#if $errors.company}<Field.Error class="text-[10px]">{$errors.company}</Field.Error>{/if}
+				</Field.Field>
 
-			<textarea
-				placeholder="Transmission Content"
-				class="h-40 w-full border border-border bg-card p-4 transition-all outline-none focus:border-primary"
-			></textarea>
+				<Field.Field class="space-y-1">
+					<Field.Label class="text-xs uppercase">Email</Field.Label>
+					<Input
+						type="email"
+						name="email"
+						placeholder="example@company.com"
+						class={input_class}
+						bind:value={$formData.email}
+						autocomplete="work email"
+					/>
+					{#if $errors.email}<Field.Error class="text-[10px]">{$errors.email}</Field.Error>{/if}
+				</Field.Field>
 
-			<Button type="submit">Send Data</Button>
+				<Field.Field class="space-y-1">
+					<Field.Label class="text-xs uppercase">Inquiry Protocol</Field.Label>
+					<Select.Root type="single" name="inquiryProtocol" bind:value={$formData.inquiryProtocol}>
+						<Select.Trigger class="h-10 {input_class}">
+							{$formData.inquiryProtocol || 'Select Protocol...'}
+						</Select.Trigger>
+						<Select.Content>
+							<Select.Item value="export">Export Request</Select.Item>
+							<Select.Item value="agency">Agency Representation</Select.Item>
+							<Select.Item value="import">Material Sourcing (Import)</Select.Item>
+						</Select.Content>
+					</Select.Root>
+					{#if $errors.inquiryProtocol}<Field.Error class=" text-[10px]"
+							>{$errors.inquiryProtocol}</Field.Error
+						>{/if}
+				</Field.Field>
+
+				<Field.Field class="space-y-1 md:col-span-2">
+					<Field.Label class="text-xs uppercase">Message</Field.Label>
+					<Textarea
+						name="message"
+						rows={4}
+						class="min-h-25 {input_class}"
+						placeholder="CAS numbers, tonnage, etc..."
+						bind:value={$formData.message}
+						onkeydown={(event) => {
+							// if (event.key === 'Enter' && !event.shiftKey) {
+							// 	event.preventDefault(); // Stop the new line from being created
+							// 	event.target.form.requestSubmit(); // Trigger the form submission
+							// }
+						}}
+					/>
+					{#if $errors.message}<Field.Error class="text-[10px]">{$errors.message}</Field.Error>{/if}
+				</Field.Field>
+
+				<div class="pt-2 md:col-span-2">
+					<Button type="submit" class="w-full px-8 md:w-max">Execute Transmission</Button>
+				</div>
+			</div>
 		</form>
 	</div>
 </section>
@@ -263,9 +340,7 @@
 <style>
 	:global(.embla__slide:not(.is-snapped)) {
 		opacity: 0.3;
-
 		background-color: red;
-
 		filter: grayscale(1);
 	}
 
