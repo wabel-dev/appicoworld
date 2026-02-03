@@ -1,16 +1,13 @@
 <script lang="ts">
 	import './layout.css';
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import favicon from '$lib/assets/appico_logo.webp';
 	import Navbar from '$lib/components/layout/Navbar.svelte';
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy } from 'svelte';
 	import { lenis } from '$lib/lenis';
+	import Footer from '$lib/components/layout/Footer.svelte';
 
 	let { children } = $props();
-	onMount(() => {
-		gsap.registerPlugin(ScrollTrigger);
-	});
+
 	onDestroy(() => {
 		if (lenis) {
 			lenis.destroy();
@@ -24,3 +21,4 @@
 </svelte:head>
 <Navbar />
 {@render children()}
+<Footer />

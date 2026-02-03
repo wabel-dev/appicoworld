@@ -7,19 +7,26 @@
 	// Data structure for your inventory
 	const compounds = [
 		{
-			formula: 'C₁₆H₂₈O',
-			name: 'Ambroxan Pure',
-			desc: 'Synthetic Ambergris | 99.9% Purity',
-			target: 90
+			formula: '01 // FOOD',
+			name: 'Food Ingredients',
+			desc: 'High-grade additives, preservatives, and flavors for industrial food processing.',
+			target: 75, // Supply Chain Reliability
+			suppliers: 40
 		},
 		{
-			formula: 'C₁₅H₂₆O',
-			name: 'Vetiverol',
-			desc: 'Haiti Extraction | Organic Isolate',
-			target: 75
+			formula: '02 // SCENT',
+			name: 'Aromatics & Esters',
+			desc: 'Premium synthetic compounds and oils for the fine fragrance industry.',
+			target: 90,
+			suppliers: 25
 		},
-		{ formula: 'C₁₀H₁₂O₂', name: 'Eugenol', desc: 'Spicy Clove Note | USP Grade', target: 60 },
-		{ formula: 'C₁₁H₁₆O', name: 'Jasmone', desc: 'Floral Ketone | Cis-isomer', target: 85 }
+		{
+			formula: '03 // AGENCY',
+			name: 'Global Agencies',
+			desc: 'Exclusive commercial representation for top-tier international suppliers.',
+			target: 80,
+			suppliers: 10
+		}
 	];
 
 	let isInView = $state(false);
@@ -55,13 +62,13 @@
 	oninview_change={handleChange}
 >
 	<div class="mb-12 space-y-2 text-center md:text-left">
-		<h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-			Molecular Inventory
-		</h2>
-		<p class="text-muted-foreground">High-purity raw isolates available for immediate export.</p>
+		<h2 class="text-3xl font-bold tracking-tight text-foreground sm:text-4xl">Our Expertise</h2>
+		<p class="text-muted-foreground">
+			Bridging the gap between global manufacturers and local industry requirements.
+		</p>
 	</div>
 
-	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{#each compounds as item, i}
 			<div
 				class="group clip-card relative overflow-hidden border border-border bg-card p-6 transition-all duration-300 hover:border-primary hover:bg-primary/5"

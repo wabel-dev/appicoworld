@@ -1,35 +1,66 @@
 <script lang="ts">
 	import { Button } from '$lib/components/ui/button/index.js';
 
-	
-
 	import { gsap } from 'gsap';
 
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 	import * as Card from '$lib/components/ui/card/index.js';
 
-	import * as Carousel from '$lib/components/ui/carousel/index.js';
-
-	import Autoplay from 'embla-carousel-autoplay';
-
-	import ClassNames from 'embla-carousel-class-names';
-
-	import Mane from '$lib/assets/mane.jpg';
-
-	import tcf from '$lib/assets/tcf.jpg';
-	import Opencard from '$lib/components/Opencard.svelte';
 	import Stats from '$lib/components/Stats.svelte';
 	import Compuands from '$lib/components/Compuands.svelte';
+	import { IsMobile } from '$lib/hooks/is-mobile.svelte';
+	import { getLocale } from '$lib/paraglide/runtime';
 
 	let herotitle: HTMLElement | null = $state(null);
 
 	let herosubtitle: HTMLElement | null = $state(null);
 
+	const services = [
+		{
+			number: '01',
+			title: 'Food Raw Materials',
+			description:
+				'We supply high-grade additives, flavors, preservatives, and essential ingredients for large-scale food processing and industrial manufacturing.'
+		},
+		{
+			number: '02',
+			title: 'Aromatics & Esters',
+			description:
+				'Importing premium oils, synthetic compounds, and active cosmetic ingredients. We represent top-tier global perfumery houses.'
+		},
+		{
+			number: '03',
+			title: 'Global Representation',
+			description:
+				'We act as the exclusive commercial agent for international suppliers, handling all import/export logistics and trade compliance.'
+		}
+	];
+	const services_ar = [
+		{
+			number: '01',
+			title: 'Food Industry Raw Materials',
+			description:
+				"We represent global suppliers of food additives, preservatives, flavor enhancers, stabilizers, and specialty ingredients for Syria's food manufacturing sector."
+		},
+		{
+			number: '02',
+			title: 'Synthetic Fragrance Compounds',
+			description:
+				'Exclusive representation of international manufacturers of aroma chemicals, essential oil alternatives, and fragrance ingredients for perfumery and cosmetics.'
+		},
+		{
+			number: '03',
+			title: 'Import & Customs Facilitation',
+			description:
+				'End-to-end import management including documentation, customs clearance, and Syrian Standardization & Metrology Organization (SASMO) compliance.'
+		}
+	];
+
 	$effect(() => {
 		if (!herotitle || !herosubtitle) return;
 
-		
+		gsap.registerPlugin(ScrollTrigger);
 
 		// Create animations and store references for cleanup
 
@@ -80,19 +111,16 @@
 		const cardAnimations = gsap.utils.toArray('.card').map((card) => {
 			return gsap.from(card as HTMLElement, {
 				y: 50,
-
 				opacity: 0,
-
 				duration: 0.8,
-
+				ease: 'power2.out',
 				scrollTrigger: {
 					trigger: card as HTMLElement,
 
-					start: 'top 85%',
-
-					end: 'bottom 15%',
-
-					toggleActions: 'play reverse play reverse'
+					start: IsMobile ? 'top 92%' : 'top 85%',
+					toggleActions: 'play none none reverse'
+					// Optional: If you want cards to stagger only when they are side-by-side
+					// invalidateOnRefresh: true,
 				}
 			});
 		});
@@ -115,8 +143,6 @@
 	});
 </script>
 
-
-
 <header
 	class="relative flex h-screen items-center justify-center overflow-hidden px-5 text-center"
 	id="hero"
@@ -133,7 +159,8 @@
 			class="hero-subtitle mb-10 text-xl tracking-wide text-muted-foreground md:text-2xl"
 			bind:this={herosubtitle}
 		>
-			Global import & export of premium fragrance compounds and raw synthetic materials.
+			Syria's premier representative for international suppliers of food industry raw materials and
+			synthetic fragrances compounds.
 		</p>
 
 		<Button>Explore Catalog</Button>
@@ -142,59 +169,52 @@
 	<div id="particle-container" class="pointer-events-none absolute inset-0"></div>
 </header>
 
-<section class="relative bg-background px-12 py-24" id="services">
-	<div class="mb-16 border-l-4 border-primary pl-5">
-		<h2 class="font-orbitron text-4xl uppercase">Our Capabilities</h2>
-
-		<p class="mt-2 text-muted-foreground">Precision logistics for delicate compounds.</p>
+<section class="relative bg-background px-6 py-16 md:px-12 md:py-24" id="services">
+	<div class="mb-12 border-l-4 border-primary pl-5 md:mb-16">
+		<h2 class="font-orbitron text-3xl uppercase md:text-4xl">Our Representation Services</h2>
+		<p class="mt-2 text-sm text-muted-foreground md:text-base">
+			Connecting Syrian industries with world-class suppliers since 2016.
+		</p>
 	</div>
 
-	<div class="grid grid-cols-1 gap-8 md:grid-cols-3">
-		<Card.Root class="card">
-			<Card.Header>
-				<Card.Title>
-					<div class=" mb-5 text-3xl text-primary">01</div>
-
-					<h3 class=" mb-4 text-2xl uppercase">Global Sourcing</h3></Card.Title
+	<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:gap-8 lg:grid-cols-3">
+		{#if getLocale() === 'ar'}
+			{#each services_ar as service, index}
+				<Card.Root
+					class="card flex h-full flex-col {index === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}"
 				>
-			</Card.Header>
-
-			<Card.Content>
-				<p class="leading-relaxed text-muted-foreground">
-					We extract and synthesize rare olfactory materials from 40+ countries.
-				</p>
-			</Card.Content>
-		</Card.Root>
-
-		<Card.Root class="card">
-			<Card.Header>
-				<Card.Title>
-					<div class="mb-5 text-3xl text-primary">02</div>
-
-					<h3 class="mb-4 text-2xl uppercase">Hazmat Logistics</h3></Card.Title
+					<Card.Header>
+						<Card.Title>
+							<div class="mb-4 text-3xl text-primary">{service.number}</div>
+							<h3 class="text-xl font-bold uppercase md:text-2xl">{service.title}</h3>
+						</Card.Title>
+					</Card.Header>
+					<Card.Content>
+						<p class="leading-relaxed text-muted-foreground">
+							{service.description}
+						</p>
+					</Card.Content>
+				</Card.Root>
+			{/each}
+		{:else}
+			{#each services as service, index}
+				<Card.Root
+					class="card flex h-full flex-col {index === 2 ? 'sm:col-span-2 lg:col-span-1' : ''}"
 				>
-			</Card.Header>
-
-			<Card.Content>
-				<p class="leading-relaxed text-muted-foreground">
-					Specialized transport for volatile esters and essential oils. Tracked via blockchain.
-				</p>
-			</Card.Content>
-		</Card.Root>
-
-		<Card.Root class="card">
-			<Card.Header>
-				<div class="mb-5 text-3xl text-primary">03</div>
-
-				<h3 class="mb-4 text-2xl uppercase">Synthetic Export</h3></Card.Header
-			>
-
-			<Card.Content>
-				<p class="leading-relaxed text-muted-foreground">
-					Next-gen lab-grown musk and ambergris alternatives for major fashion houses.
-				</p></Card.Content
-			>
-		</Card.Root>
+					<Card.Header>
+						<Card.Title>
+							<div class="mb-4 text-3xl text-primary">{service.number}</div>
+							<h3 class="text-xl font-bold uppercase md:text-2xl">{service.title}</h3>
+						</Card.Title>
+					</Card.Header>
+					<Card.Content>
+						<p class="leading-relaxed text-muted-foreground">
+							{service.description}
+						</p>
+					</Card.Content>
+				</Card.Root>
+			{/each}
+		{/if}
 	</div>
 </section>
 <Stats />
@@ -240,39 +260,6 @@
 	</div>
 </section>
 
-<footer class="border-t border-border py-10 text-center text-sm text-muted-foreground">
-	&copy; 2026 Appico World Fragrance Logistics. All Systems Operational.
-
-	<br />
-</footer>
-
-<!-- <div class="w-full px-12">
-	<Carousel.Root
-		class="w-full"
-		plugins={[
-			Autoplay({
-				delay: 2000
-			}),
-
-			ClassNames()
-		]}
-		opts={{ align: 'center', loop: true }}
-	>
-		<Carousel.Content class="embla__slide -ms-1">
-			<Carousel.Item class="ps-1 md:basis-1/2 lg:basis-1/3">
-				<Opencard src={Mane} alt="mane logo" desc="Mane" />
-			</Carousel.Item>
-			<Carousel.Item class="ps-1 md:basis-1/2 lg:basis-1/3">
-				<Opencard src={tcf} alt="tcf logo" desc="tcf" />
-			</Carousel.Item>
-		</Carousel.Content>
-
-		<Carousel.Previous />
-
-		<Carousel.Next />
-	</Carousel.Root>
-</div> -->
-
 <style>
 	:global(.embla__slide:not(.is-snapped)) {
 		opacity: 0.3;
@@ -284,11 +271,9 @@
 
 	/* --- Glass Navbar --- */
 
-	
-
 	:global(.cyber-card:hover) {
-		transform: translateY(-0.5rem); /* -translate-y-2 */
+		transform: translateY(-0.5rem) !important; /* -translate-y-2 */
 
-		border-color: hsl(var(--primary));
+		border-color: hsl(var(--primary)) !important;
 	}
 </style>

@@ -15,8 +15,6 @@
 		easing: cubicOut
 	});
 
-	// Only set the target to 'value' when the element is visible.
-	// Otherwise, keep it at 'initial'.
 	$effect.pre(() => {
 		num.target = isInView ? value : initial;
 	});
@@ -31,9 +29,9 @@
 		unobserveOnEnter: false,
 		rootMargin: '-50px'
 	}}
-	oninview_change={handleChange}
+	oninview_enter={handleChange}
 	class={cn('inline-block tracking-normal text-primary', className)}
 	{...rest}
 >
-	{num.current.toFixed(2)}
+	{num.current.toFixed(1)}
 </div>
