@@ -7,7 +7,7 @@
 		base: "focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive inline-flex shrink-0 items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap transition-all outline-none focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
 		variants: {
 			variant: {
-				default: 'bg-primary text-primary-foreground hover:bg-primary/70 shadow-xs',
+				default: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-xs',
 				destructive:
 					'bg-destructive hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 text-white shadow-xs',
 				outline:
@@ -38,6 +38,7 @@
 		WithElementRef<HTMLAnchorAttributes> & {
 			variant?: ButtonVariant;
 			size?: ButtonSize;
+			isFuture?: boolean;
 		};
 </script>
 
@@ -51,6 +52,7 @@
 		type = 'button',
 		disabled,
 		children,
+		isFuture = true,
 		...restProps
 	}: ButtonProps = $props();
 </script>
@@ -72,7 +74,7 @@
 	<button
 		bind:this={ref}
 		data-slot="button"
-		class={cn(buttonVariants({ variant, size }), className)}
+		class={cn(buttonVariants({ variant, size }), className, isFuture ? 'btn-future' : '')}
 		{type}
 		{disabled}
 		{...restProps}
@@ -80,3 +82,10 @@
 		{@render children?.()}
 	</button>
 {/if}
+
+<style>
+	.btn-future {
+		transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+		clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
+	}
+</style>
