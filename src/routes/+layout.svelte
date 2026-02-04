@@ -27,7 +27,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>(eslint0 old)</title>
+	<title>oklch</title>
 </svelte:head>
 <Navbar />
 {@render children()}
