@@ -17,13 +17,28 @@ export default defineConfig({
 
 	css: {
 		postcss: {
-			plugins: [autoprefixer()]
+			plugins: [
+				autoprefixer({
+					// Target browsers for vendor prefixing
+					overrideBrowserslist: [
+						'Chrome >= 60',
+						'Firefox >= 60',
+						'Safari >= 12',
+						'Edge >= 79',
+						'last 2 versions',
+						'> 1%',
+						'not dead'
+					]
+				})
+			]
 		}
 	},
 	build: {
-		// 1. Tell Vite to transpile JS for older browsers
+		// Target ES2015 for broad compatibility
 		target: 'es2015',
-		// 2. Tell Lightning CSS to downlevel modern CSS features
-		cssTarget: 'chrome80'
+		// Enable CSS code splitting for better performance
+		cssCodeSplit: true,
+		// Minify CSS in production
+		cssMinify: true
 	}
 });
