@@ -27,8 +27,6 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<link rel="preload" href="./layout.css" as="style" />
-	<noscript><link rel="stylesheet" href="style.css" /></noscript>
 </svelte:head>
 <Navbar />
 {@render children()}
