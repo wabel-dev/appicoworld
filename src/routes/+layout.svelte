@@ -28,7 +28,6 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>Appico World (Local)</title>
 </svelte:head>
 <Navbar />
 {@render children()}

@@ -1,3 +1,8 @@
+<script module lang="ts">
+	import Loader from '@lucide/svelte/icons/loader';
+	import { schema } from '$lib/schema';
+</script>
+
 <script lang="ts">
 	import { untrack } from 'svelte';
 	import { superForm } from 'sveltekit-superforms';
@@ -12,16 +17,14 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
 	import { Textarea } from '$lib/components/ui/textarea';
-	import Compuands from '$lib/components/Compuands.svelte';
-	import Stats from '$lib/components/Stats.svelte';
 
 	// Logic & Types
-	import { schema } from '$lib/schema';
+
 	import { IsMobile } from '$lib/hooks/is-mobile.svelte';
 	import { getLocale } from '$lib/paraglide/runtime';
 	import type { PageData } from './$types';
 	import { fade } from 'svelte/transition';
-	import { Loader } from '@lucide/svelte';
+
 	import { m } from '$lib/paraglide/messages';
 
 	// Props & State
@@ -29,7 +32,6 @@
 	let herotitle = $state<HTMLElement | null>(null);
 	let herosubtitle = $state<HTMLElement | null>(null);
 
-	const locale = $derived(getLocale());
 	const input_class =
 		'w-full border border-border bg-card p-4 transition-all outline-none focus:border-primary';
 
@@ -140,6 +142,48 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Appico World | Global Trade & Industrial Raw Materials | Food, Fragrance & Cosmetics</title
+	>
+
+	<meta
+		name="description"
+		content="Appico World  is a premier global trading company & commercial agent specializing in raw material sourcing for the Food, Fragrance, and Cosmetic industries. Hazmat logistics experts."
+	/>
+
+	<meta
+		name="keywords"
+		content= "Raw Materials, Import Export, Commercial Agency, Food Additives, Fragrance Compounds, Cosmetic Ingredients, Industrial Chemicals, Hazmat Logistics, B2B Trade, Global Sourcing, Appico World, Founder and Owner by Wabel Ataya "
+	/>
+
+	<meta name="author" content="Appico World Trading Co." />
+	<meta name="copyright" content="Appico World  Trading Co." />
+	<meta name="robots" content="index, follow" /> <meta property="og:type" content="website" />
+	<meta property="og:url" content="https://appicoworld.vercel.app/" />
+	<meta property="og:title" content="Appico World  | The Future of Industrial Sourcing" />
+	<meta
+		property="og:description"
+		content="Exclusive commercial representation for global manufacturers. We supply high-grade raw materials for Food, Fragrance, and Cosmetics."
+	/>
+	<meta property="og:image" content="$lib/assets/appico_logo.webp" />
+	<meta property="og:site_name" content="Appico World" />
+
+	<meta name="twitter:card" content="$lib/assets/appico_logo.webp" />
+	<meta name="twitter:title" content="Appico World | Industrial Raw Materials & Logistics" />
+	<meta
+		name="twitter:description"
+		content="Bridging the gap between global synthesis labs and local manufacturing. Food, Scent, & Cosmetic sourcing."
+	/>
+	<meta
+		name="twitter:image"
+		content="https://appicoworld.vercel.app/appico_logo.webp"
+	/>
+
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+</svelte:head>
+
 {#if $delayed}
 	<div
 		transition:fade={{ duration: 150 }}
@@ -229,8 +273,8 @@
 		{/if}
 	</div>
 </section>
-<Stats />
-<Compuands />
+<data.stats />
+<data.compuands />
 <section class="flex justify-center bg-accent/5 px-6 py-16 md:px-12 md:py-24" id="contact">
 	<div class="grid w-full max-w-5xl grid-cols-1 gap-12 lg:grid-cols-5">
 		<div class="lg:col-span-2">

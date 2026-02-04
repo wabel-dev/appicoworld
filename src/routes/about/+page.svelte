@@ -3,3 +3,7 @@
 
 	let { data }: PageProps = $props();
 </script>
+
+<svelte:head>
+	<title>Appico World about</title>
+</svelte:head>
