@@ -13,38 +13,38 @@
 
 /* Fallback colors for older browsers (RGB hex) */
 :root {
-	--background: #e8dde0;
+	--background: #dcdadb;
 	--foreground: #000000;
-	--card: #fcfcfc;
-	--card-foreground: #525252;
-	--popover: #fcfcfc;
-	--popover-foreground: #525252;
-	--primary: #c4612b;
-	--primary-foreground: #fefefe;
-	--secondary: #3f3f7a;
+	--card: #f5f5f5;
+	--card-foreground: #333333;
+	--popover: #f5f5f5;
+	--popover-foreground: #333333;
+	--primary: #bc1b21;
+	--primary-foreground: #333333;
+	--secondary: #2e3440;
 	--secondary-foreground: #fefefe;
-	--muted: #d9c7cb;
-	--muted-foreground: #5f5f8f;
-	--accent: #d4b8be;
+	--muted: #cfcdce;
+	--muted-foreground: #4b5563;
+	--accent: #bfbbbd;
 	--accent-foreground: #000000;
-	--destructive: #c35a2a;
+	--destructive: #cc3333;
 	--destructive-foreground: #ffffff;
-	--border: #d9d9d9;
-	--input: #e8e8e8;
-	--ring: #7d7d7d;
-	--chart-1: #7d7d7d;
-	--chart-2: #5a7f8f;
-	--chart-3: #a8a8a8;
-	--chart-4: #bababa;
-	--chart-5: #cecece;
-	--sidebar: #efefef;
-	--sidebar-foreground: #525252;
-	--sidebar-primary: #7d7d7d;
+	--border: #d0d0d0;
+	--input: #e0e0e0;
+	--ring: #606060;
+	--chart-1: #606060;
+	--chart-2: #476666;
+	--chart-3: #909090;
+	--chart-4: #a8a8a8;
+	--chart-5: #c0c0c0;
+	--sidebar: #eaeaea;
+	--sidebar-foreground: #333333;
+	--sidebar-primary: #606060;
 	--sidebar-primary-foreground: #ffffff;
-	--sidebar-accent: #cecece;
-	--sidebar-accent-foreground: #525252;
+	--sidebar-accent: #c0c0c0;
+	--sidebar-accent-foreground: #333333;
 	--sidebar-border: #d9d9d9;
-	--sidebar-ring: #7d7d7d;
+	--sidebar-ring: #d0d0d0;
 	--radius: 0.35rem;
 }
 
@@ -83,6 +83,7 @@
 		--sidebar-accent-foreground: oklch(0.3211 0 0);
 		--sidebar-border: oklch(0.8576 0 0);
 		--sidebar-ring: oklch(0.4891 0 0);
+		--radius: 0.35rem;
 	}
 }
 
@@ -167,7 +168,7 @@
 	--radius-lg: var(--radius);
 	--radius-xl: calc(var(--radius) + 4px);
 
-	/* Theme Mapping */
+	/* Theme Mapping [cite: 16, 17, 18] */
 	--color-background: var(--background);
 	--color-foreground: var(--foreground);
 	--color-card: var(--card);
@@ -206,11 +207,9 @@
 
 @layer base {
 	* {
-		border-color: var(--border);
 		@apply border-border outline-ring/50;
 	}
 	body {
-		background-color: white;
 		@apply bg-background text-foreground;
 	}
 }
