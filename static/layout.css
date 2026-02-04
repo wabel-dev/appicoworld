@@ -126,12 +126,16 @@
 }
 
 @layer base {
-	* {
-		@apply border-border outline-ring/50;
-	}
-	body {
-		@apply bg-background text-foreground;
-	}
+    * {
+        /* Adds a fallback for the border color */
+        border-color: var(--border);
+        @apply border-border outline-ring/50;
+    }
+    body {
+        /* Ensures a fallback background color if oklch fails */
+        background-color: white; 
+        @apply bg-background text-foreground;
+    }
 }
 /* body {
 	font-family: 'Gunken', system-ui, sans-serif;

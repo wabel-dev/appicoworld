@@ -17,6 +17,6 @@ export default defineConfig({
 		// 1. Tell Vite to transpile JS for older browsers
 		target: 'es2015',
 		// 2. Tell Lightning CSS to downlevel modern CSS features
-		cssTarget: 'chrome61'
+		cssTarget: 'chrome80',
 	}
 });
