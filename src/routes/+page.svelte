@@ -199,13 +199,13 @@
 
 	<!-- Open Graph for WhatsApp/Facebook (ARABIC) -->
 	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://appicoworld.vercel.app/" />
+	<meta property="og:url" content="https://appicoworld.vercel.app/ar" />
 	<meta property="og:title" content="أبيكو العالمية | مستقبل التوريد الصناعي" />
 	<meta
 		property="og:description"
 		content="تمثيل تجاري حصري للمصنعين العالميين. نوفر مواد خام عالية الجودة للأغذية والعطور ومستحضرات التجميل."
 	/>
-	<meta property="og:image" content="https://appicoworld.vercel.app/appico_logo.webp" />
+	<meta property="og:image" content="https://appicoworld.vercel.app/ar/appico_logo.webp" />
 	<meta property="og:site_name" content="أبيكو العالمية" />
 	<meta property="og:locale" content="ar_SA" />
 
@@ -216,7 +216,7 @@
 		name="twitter:description"
 		content="سد الفجوة بين مختبرات التصنيع العالمية والإنتاج المحلي. توريد الأغذية والعطور ومستحضرات التجميل."
 	/>
-	<meta name="twitter:image" content="https://appicoworld.vercel.app/appico_logo.webp" />
+	<meta name="twitter:image" content="https://appicoworld.vercel.app/ar/appico_logo.webp" />
 
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
