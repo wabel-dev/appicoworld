@@ -153,7 +153,7 @@
 
 	<meta
 		name="keywords"
-		content= "Raw Materials, Import Export, Commercial Agency, Food Additives, Fragrance Compounds, Cosmetic Ingredients, Industrial Chemicals, Hazmat Logistics, B2B Trade, Global Sourcing, Appico World, Founder and Owner by Wabel Ataya "
+		content="Raw Materials, Import Export, Commercial Agency, Food Additives, Fragrance Compounds, Cosmetic Ingredients, Industrial Chemicals, Hazmat Logistics, B2B Trade, Global Sourcing, Appico World, Founder and Owner by Wabel Ataya "
 	/>
 
 	<meta name="author" content="Appico World Trading Co." />
@@ -174,10 +174,49 @@
 		name="twitter:description"
 		content="Bridging the gap between global synthesis labs and local manufacturing. Food, Scent, & Cosmetic sourcing."
 	/>
+	<meta name="twitter:image" content="https://appicoworld.vercel.app/appico_logo.webp" />
+
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+	<title
+		>أبيكو العالمية | التجارة العالمية والمواد الخام الصناعية | الأغذية والعطور ومستحضرات التجميل</title
+	>
+
 	<meta
-		name="twitter:image"
-		content="https://appicoworld.vercel.app/appico_logo.webp"
+		name="description"
+		content="أبيكو العالمية هي شركة تجارة عالمية رائدة ووكيل تجاري متخصص في توريد المواد الخام لصناعات الأغذية والعطور ومستحضرات التجميل. خبراء في لوجستيات المواد ."
 	/>
+
+	<meta
+		name="keywords"
+		content="المواد الخام, الاستيراد والتصدير, الوكالة التجارية, إضافات غذائية, مركبات العطور, مكونات مستحضرات التجميل, المواد الكيميائية الصناعية, لوجستيات المواد , التجارة بين الشركات, التوريد العالمي, أبيكو العالمية, المؤسس والمالك وابل عطايا"
+	/>
+
+	<meta name="author" content="شركة أبيكو العالمية للتجارة" />
+	<meta name="copyright" content="شركة أبيكو العالمية للتجارة" />
+	<meta name="robots" content="index, follow" />
+
+	<!-- Open Graph for WhatsApp/Facebook (ARABIC) -->
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://appicoworld.vercel.app/" />
+	<meta property="og:title" content="أبيكو العالمية | مستقبل التوريد الصناعي" />
+	<meta
+		property="og:description"
+		content="تمثيل تجاري حصري للمصنعين العالميين. نوفر مواد خام عالية الجودة للأغذية والعطور ومستحضرات التجميل."
+	/>
+	<meta property="og:image" content="https://appicoworld.vercel.app/appico_logo.webp" />
+	<meta property="og:site_name" content="أبيكو العالمية" />
+	<meta property="og:locale" content="ar_SA" />
+
+	<!-- Twitter Card (ARABIC) -->
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="أبيكو العالمية | المواد الخام الصناعية والخدمات اللوجستية" />
+	<meta
+		name="twitter:description"
+		content="سد الفجوة بين مختبرات التصنيع العالمية والإنتاج المحلي. توريد الأغذية والعطور ومستحضرات التجميل."
+	/>
+	<meta name="twitter:image" content="https://appicoworld.vercel.app/appico_logo.webp" />
 
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
