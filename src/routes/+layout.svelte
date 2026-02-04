@@ -27,7 +27,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>oklch</title>
+	<title>new build</title>
 </svelte:head>
 <Navbar />
 {@render children()}
