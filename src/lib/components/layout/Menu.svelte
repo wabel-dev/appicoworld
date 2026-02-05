@@ -23,39 +23,41 @@
 	</Sheet.Trigger>
 
 	<Sheet.Content side="right" class="w-75 sm:w-100">
-		<Sheet.Header>
-			<Sheet.Title
-				class="font-orbitron flex items-center gap-2 text-left tracking-widest uppercase"
-			>
-				<span class="whitespace-nowrap">Appico World</span>
-				<img
-					class="size-8 object-contain md:size-8"
-					style="mix-blend-mode: multiply;"
-					src={logo}
-					alt="Appico World Logo"
-				/>
-			</Sheet.Title>
-			<Sheet.Description class="sr-only">Mobile navigation menu</Sheet.Description>
-		</Sheet.Header>
-
-		<nav class="mt-4 flex flex-col gap-6 px-8">
-			{#each links as link, i}
-				<Button
-					href={link.href}
-					variant="outline"
-					size="sm"
-					class="w-full hover:bg-primary focus-visible:bg-primary focus-visible:text-primary-foreground active:bg-primary active:text-primary-foreground"
-					onclick={() => (open = false)}
+		<div class=" h-full w-full will-change-transform">
+			<Sheet.Header>
+				<Sheet.Title
+					class="font-orbitron flex items-center gap-2 text-left tracking-widest uppercase"
 				>
-					{link.label}
-				</Button>
-			{/each}
+					<span class="whitespace-nowrap">Appico World</span>
+					<img
+						class="size-8 object-contain md:size-8"
+						style="mix-blend-mode: multiply;"
+						src={logo}
+						alt="Appico World Logo"
+					/>
+				</Sheet.Title>
+				<Sheet.Description class="sr-only">Mobile navigation menu</Sheet.Description>
+			</Sheet.Header>
 
-			<hr class="border-border" />
+			<nav class="mt-4 flex flex-col gap-6 px-8">
+				{#each links as link, i}
+					<Button
+						href={link.href}
+						variant="outline"
+						size="sm"
+						class="w-full hover:bg-primary focus-visible:bg-primary focus-visible:text-primary-foreground active:bg-primary active:text-primary-foreground"
+						onclick={() => (open = false)}
+					>
+						{link.label}
+					</Button>
+				{/each}
 
-			<Button class="w-full" onclick={() => (open = false)} href={localizeHref('/#contact')}
-				>{m.topical_red_panther_win()}</Button
-			>
-		</nav>
+				<hr class="border-border" />
+
+				<Button class="w-full" onclick={() => (open = false)} href={localizeHref('/#contact')}
+					>{m.topical_red_panther_win()}</Button
+				>
+			</nav>
+		</div>
 	</Sheet.Content>
 </Sheet.Root>

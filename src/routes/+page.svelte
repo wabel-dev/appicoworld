@@ -9,6 +9,11 @@
 	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import { gsap } from 'gsap';
 	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import Opencard from '$lib/components/Opencard.svelte';
+	import * as Carousel from '$lib/components/ui/carousel/index.js';
+	import Mane from '$lib/assets/mane.jpg';
+
+	import tcf from '$lib/assets/tcf.jpg';
 
 	// UI Components
 	import * as Card from '$lib/components/ui/card/index.js';
@@ -207,10 +212,10 @@
 			property="og:description"
 			content="Exclusive commercial representation for global manufacturers. We supply high-grade raw materials for Food, Fragrance, and Cosmetics."
 		/>
-		<meta property="og:image" content="$lib/assets/appico_logo.webp" />
+		<meta property="og:image" content="https://appicoworld.vercel.app/appico_logo.webp" />
 		<meta property="og:site_name" content="Appico World" />
 
-		<meta name="twitter:card" content="$lib/assets/appico_logo.webp" />
+		<meta name="twitter:card" content="https://appicoworld.vercel.app/appico_logo.webp" />
 		<meta name="twitter:title" content="Appico World | Industrial Raw Materials & Logistics" />
 		<meta
 			name="twitter:description"
@@ -320,10 +325,6 @@
 			<p class="mb-6 text-muted-foreground">
 				Ready to upgrade your supply chain? Send us a transmission.
 			</p>
-			<div class="space-y-1 text-sm">
-				<p><span class="font-bold text-primary">HQ:</span> Neo-Paris, Sector 7</p>
-				<p><span class="font-bold text-primary">EMAIL:</span> link@aether-fragrance.com</p>
-			</div>
 
 			{#if $message}
 				<div class="mt-6 animate-pulse border-l-2 border-primary bg-primary/10 p-4">
@@ -416,12 +417,28 @@
 		</form>
 	</div>
 </section>
+<div class="w-full px-12">
+	<Carousel.Root class="w-full" opts={{ align: 'center', loop: true }}>
+		<Carousel.Content class="embla__slide -ms-1">
+			<Carousel.Item class="ps-1 md:basis-1/2 lg:basis-1/3">
+				<Opencard src={Mane} alt="mane logo" desc="Mane" />
+			</Carousel.Item>
+			<Carousel.Item class="h-full md:basis-1/2 lg:basis-1/3">
+				<Opencard src={tcf} alt="tcf logo" desc="tcf" />
+			</Carousel.Item>
+		</Carousel.Content>
+
+		<Carousel.Previous />
+
+		<Carousel.Next />
+	</Carousel.Root>
+</div>
 
 <style>
 	:global(.embla__slide:not(.is-snapped)) {
 		opacity: 0.3;
-		background-color: red;
-		filter: grayscale(1);
+		/* background-color: red;
+		filter: grayscale(1); */
 	}
 
 	/* --- Glass Navbar --- */

@@ -2,7 +2,7 @@
 	import NumberTicker from './magic-ui/NumberTicker.svelte';
 	import { Separator } from '$lib/components/ui/separator/index.js';
 	import { m } from '$lib/paraglide/messages';
-	const foundingYear = 2016;
+	const foundingYear = 2019;
 	const yearsOfExperience = new Date().getFullYear() - foundingYear;
 </script>
 
@@ -29,7 +29,7 @@
 		<!-- Supplier Network -->
 		<div class="flex min-w-32 flex-col items-center text-center">
 			<p class="text-4xl font-bold text-primary tabular-nums">
-				<NumberTicker value={50} />+
+				<NumberTicker value={20} />+
 			</p>
 			<p class="mt-2 text-xs font-semibold tracking-[2px] text-muted-foreground uppercase">
 				I{m.awful_witty_stingray_agree()}
@@ -41,7 +41,7 @@
 		<!-- Client Base -->
 		<div class="flex min-w-32 flex-col items-center text-center">
 			<p class="text-4xl font-bold text-primary tabular-nums">
-				<NumberTicker value={85} />%
+				<NumberTicker value={70} />%
 			</p>
 			<p class="mt-2 text-xs font-semibold tracking-[2px] text-muted-foreground uppercase">
 				{m.happy_maroon_kudu_pinch()}
