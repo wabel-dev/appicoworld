@@ -2,7 +2,7 @@
 	import './layout.css';
 	import favicon from '$lib/assets/appico_logo.webp';
 	import Navbar from '$lib/components/layout/Navbar.svelte';
-	import { onDestroy } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { lenis } from '$lib/lenis';
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import { onNavigate } from '$app/navigation';
@@ -11,7 +11,6 @@
 	import { ModeWatcher } from 'mode-watcher';
 
 	let { children } = $props();
-	gsap.registerPlugin(ScrollTrigger);
 	onDestroy(() => {
 		if (lenis) {
 			lenis.destroy();
@@ -26,6 +25,9 @@
 				await navigation.complete;
 			});
 		});
+	});
+	onMount(() => {
+		gsap.registerPlugin(ScrollTrigger);
 	});
 </script>
 
