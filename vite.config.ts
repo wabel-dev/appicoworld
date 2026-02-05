@@ -14,7 +14,8 @@ export default defineConfig({
 			strategy: ['url', 'cookie', 'baseLocale']
 		}),
 		TailwindLegacyPlugin({
-			tailwindConfig: './tailwind.config.legacy.js' // Point to the file you made in Step 2
+			tailwindConfig: 'tailwind.config.legacy.js'
+			// Point to the file you made in Step 2
 		})
 	]
 });
