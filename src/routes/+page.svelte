@@ -54,12 +54,12 @@
 				number: '01',
 				title: 'Food Raw Materials',
 				description:
-					'We supply high-grade additives, flavors, preservatives, and essential ingredients.'
+					'Providing premium raw materials and ingredients for the food industry.'
 			},
 			{
 				number: '02',
 				title: 'Aromatics & Esters',
-				description: 'Importing premium oils, synthetic compounds, and active cosmetic ingredients.'
+				description: 'Your premier international partner acting as distinguished suppliers around the world.'
 			},
 			{
 				number: '03',
@@ -312,7 +312,7 @@
 		</p>
 	</div>
 
-	<data.partners />
+<data.partners />
 </section>
 <data.compuands />
 <section class="flex justify-center bg-accent/5 px-6 py-16 md:px-12 md:py-24" id="contact">
