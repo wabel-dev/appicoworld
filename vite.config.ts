@@ -15,10 +15,16 @@ export default defineConfig({
 		}),
 		TailwindLegacyPlugin({
 			tailwindConfig: 'tailwind.config.legacy.js',
-			assetsDir: '.vercel/output/static/_app/immutable/assets', // or .netlify/...
+
+			assetsDir: '.vercel/output/static/_app/immutable/assets',
 			publicPath: '/_app/immutable/assets/',
-			buildDir: '.vercel/output/static' ,
+			buildDir: '.vercel/output/static',
+
 			injectInHTML: true,
+
+			outputCSSName: 'tailwind-v3-legacy.css',
+
+			deleteStyles: []
 		})
 	]
 });
