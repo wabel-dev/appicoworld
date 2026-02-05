@@ -25,7 +25,7 @@
 	import { fade } from 'svelte/transition';
 
 	import { m } from '$lib/paraglide/messages';
-	import Partneres from '$lib/components/Partneres.svelte';
+	// import Partneres from '$lib/components/Partneres.svelte';
 
 	// Props & State
 	let { data }: { data: PageData } = $props();
@@ -313,7 +313,7 @@
 		</p>
 	</div>
 
-	<Partneres />
+	<!-- <Partneres /> -->
 </section>
 <data.compuands />
 <section class="flex justify-center bg-accent/5 px-6 py-16 md:px-12 md:py-24" id="contact">
