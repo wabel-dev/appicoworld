@@ -64,7 +64,7 @@
 		</p>
 
 		<div class="mt-8 text-xs font-bold tracking-[2px] md:text-[0.9rem]">
-			// ALEXEI V. ROSTOVA <span class="font-normal text-muted-foreground">[DIRECTOR]</span>
+			// Wabel Ataya <span class="font-normal text-muted-foreground">[CEO&Founder]</span>
 		</div>
 	</div>
 </section>
