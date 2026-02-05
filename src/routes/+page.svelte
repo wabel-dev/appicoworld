@@ -25,7 +25,6 @@
 	import { fade } from 'svelte/transition';
 
 	import { m } from '$lib/paraglide/messages';
-	// import Partneres from '$lib/components/Partneres.svelte';
 
 	// Props & State
 	let { data }: { data: PageData } = $props();
@@ -307,13 +306,13 @@
 <data.stats />
 <section class="relative bg-background px-6 py-16 md:px-12 md:py-24" id="services">
 	<div class="mb-12 border-l-4 border-primary pl-5 md:mb-16">
-		<h2 class="text-3xl uppercase md:text-4xl">our Partners</h2>
+		<h2 class="text-3xl uppercase md:text-4xl">Our Partners</h2>
 		<p class="mt-2 text-sm text-muted-foreground md:text-base">
 			{m.due_free_kangaroo_kiss()}
 		</p>
 	</div>
 
-	<!-- <Partneres /> -->
+	<data.partners />
 </section>
 <data.compuands />
 <section class="flex justify-center bg-accent/5 px-6 py-16 md:px-12 md:py-24" id="contact">
