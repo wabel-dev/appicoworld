@@ -27,9 +27,7 @@
 		"@tailwindcss/vite": "^4.1.18",
 		"@types/node": "^22",
 		"@types/nodemailer": "^7.0.4",
-		"autoprefixer": "^10.4.24",
 		"bits-ui": "^2.15.5",
-		"browserlist": "^1.0.2",
 		"clsx": "^2.1.1",
 		"embla-carousel-svelte": "^8.6.0",
 		"eslint": "^9.39.2",
@@ -37,7 +35,6 @@
 		"eslint-plugin-svelte": "^3.14.0",
 		"formsnap": "^2.0.1",
 		"globals": "^17.1.0",
-		"lightningcss": "^1.31.1",
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.4.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
@@ -51,6 +48,7 @@
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.53.1",
 		"vite": "^7.3.1",
+		"vite-plugin-tailwind-legacy": "^1.2.0",
 		"zod": "^4.3.6"
 	},
 	"dependencies": {

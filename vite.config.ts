@@ -1,9 +1,8 @@
 import { paraglideVitePlugin } from '@inlang/paraglide-js';
-import browserslist from 'browserslist';
-import { browserslistToTargets } from 'lightningcss';
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
+import TailwindLegacyPlugin from 'vite-plugin-tailwind-legacy';
 
 export default defineConfig({
 	plugins: [
@@ -13,22 +12,9 @@ export default defineConfig({
 			project: './project.inlang',
 			outdir: './src/lib/paraglide',
 			strategy: ['url', 'cookie', 'baseLocale']
+		}),
+		TailwindLegacyPlugin({
+			tailwindConfig: './tailwind.config.legacy.js' // Point to the file you made in Step 2
 		})
-	],
-
-	css: {
-		// Use lightningcss to process CSS (it handles prefixing & transpiling)
-		transformer: 'lightningcss',
-		lightningcss: {
-			// Target Chrome 80+ (covers your old laptops).
-			// This forces Tailwind to remove "@layer" wrappers and fix syntax.
-			targets: browserslistToTargets(browserslist('>= 0.25%, Chrome >= 80'))
-		}
-	},
-	build: {
-		// Target ES2015 for broad compatibility
-		target: 'es2015',
-		// Minify CSS in production
-		cssMinify: 'lightningcss'
-	}
+	]
 });
