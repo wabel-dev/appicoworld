@@ -1,27 +1,28 @@
 <script lang="ts">
 	import * as Carousel from '$lib/components/ui/carousel/index.js';
 	import Mane from '$lib/assets/mane.jpg';
-
+	import { Button } from '$lib/components/ui/button/index.js';
 	import tcf from '$lib/assets/tcf.jpg';
 	import ClassNames from 'embla-carousel-class-names';
 	import Autoplay from 'embla-carousel-autoplay';
+	import { m } from '$lib/paraglide/messages';
 	const classNamesPlugin = ClassNames({
 		snapped: 'is-snapped'
 	});
 	const autoPlayPlugin = Autoplay({ delay: 3000, stopOnInteraction: true });
 	const partneresCards = [
-		{ src: Mane, alt: 'mane logo', desc: 'Mane' },
-		{ src: tcf, alt: 'tcf logo', desc: 'tcf' },
-
-		{ src: Mane, alt: 'mane logo', desc: 'Mane' },
-		{ src: tcf, alt: 'tcf logo', desc: 'tcf' },
-
-		{ src: Mane, alt: 'mane logo', desc: 'Mane' },
-		{ src: tcf, alt: 'tcf logo', desc: 'tcf' }
+		{ src: Mane, alt: 'mane logo', desc: 'MANE', href: 'https://www.mane.com/' },
+		{ src: tcf, alt: 'tcf logo', desc: 'TCF', href: 'https://www.tcffragrance.com/' },
+		{ src: Mane, alt: 'mane logo', desc: 'MANE', href: 'https://www.mane.com/' },
+		{ src: tcf, alt: 'tcf logo', desc: 'TCF', href: 'https://www.tcffragrance.com/' },
+		{ src: Mane, alt: 'mane logo', desc: 'MANE', href: 'https://www.mane.com/' },
+		{ src: tcf, alt: 'tcf logo', desc: 'TCF', href: 'https://www.tcffragrance.com/' },
+		{ src: Mane, alt: 'mane logo', desc: 'MANE', href: 'https://www.mane.com/' },
+		{ src: tcf, alt: 'tcf logo', desc: 'TCF', href: 'https://www.tcffragrance.com/' }
 	];
 </script>
 
-{#snippet play_card(src: string, alt: string, desc: string)}
+{#snippet play_card(src: string, alt: string, desc: string, href: string)}
 	<!-- From Uiverse.io by Creatlydev -->
 	<article class="mx-auto w-full max-w-75 border bg-card p-1 text-card-foreground shadow-sm">
 		<section class="rounded-t-lg p-1 text-sm">
@@ -38,12 +39,7 @@
 					</p>
 				</div>
 			</div>
-
-			<button
-				class="w-full rounded-2xl bg-primary px-5 py-2 text-base font-normal text-primary-foreground transition-colors hover:bg-primary/90 min-[340px]:w-max"
-			>
-				view
-			</button>
+			<Button class="w-full  min-[340px]:w-max" {href}>{m.pretty_large_dolphin_attend()}</Button>
 		</footer>
 	</article>
 {/snippet}
@@ -63,7 +59,7 @@
                  ease-in-out md:basis-1/2 lg:basis-1/3
                  [&.is-snapped]:scale-100 [&.is-snapped]:opacity-100 [&.is-snapped]:grayscale-0"
 				>
-					{@render play_card(partner.src, partner.alt, partner.desc)}
+					{@render play_card(partner.src, partner.alt, partner.desc, partner.href)}
 				</Carousel.Item>
 			{/each}
 		</Carousel.Content>

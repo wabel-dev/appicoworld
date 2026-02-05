@@ -10,22 +10,22 @@
 	const compounds = [
 		{
 			formula: '01 // FOOD',
-			name: 'Food Ingredients',
-			desc: 'High-grade additives, preservatives, and flavors for industrial food processing.',
+			name: 'Market Leadership',
+			desc: `Over a Decade of Experience serving Syria's top manufacturers with dedication, delivering consistent growth and unmatched local expertise.`,
 			target: 75, // Supply Chain Reliability
 			suppliers: 40
 		},
 		{
 			formula: '02 // SCENT',
-			name: 'Aromatics & Esters',
-			desc: 'Premium synthetic compounds and oils for the fine fragrance industry.',
+			name: 'Trusted Patnerships',
+			desc: 'Preferred by clients & suppliers building strong, long-term relationships: trusted by hundreds of local clients and leading international suppliers.',
 			target: 90,
 			suppliers: 25
 		},
 		{
 			formula: '03 // AGENCY',
-			name: 'Global Agencies',
-			desc: 'Exclusive commercial representation for top-tier international suppliers.',
+			name: 'Proven Performance',
+			desc: 'Excellence in Sales & Delivery achieving high import success rates, seamless logistics, and remarkable market coverage.',
 			target: 80,
 			suppliers: 10
 		}

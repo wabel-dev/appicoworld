@@ -56,11 +56,11 @@
 		</h2>
 		<p class="mb-5 text-lg italic opacity-90 md:text-[1.1rem]">
 			"We don't just trade commodities; we engineer the supply chain. In an industry defined by
-			volatility, AETHER provides the constant."
+			volatility, Appico World provides the constant."
 		</p>
 		<p class="text-base leading-relaxed text-muted-foreground">
 			Established to bridge the gap between European synthesis labs and Middle Eastern industrial
-			manufacturing, AETHER has evolved into a premier commercial agency.
+			manufacturing, Appico World has evolved into a premier commercial agency.
 		</p>
 
 		<div class="mt-8 text-xs font-bold tracking-[2px] md:text-[0.9rem]">

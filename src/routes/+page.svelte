@@ -183,7 +183,9 @@
 		/>
 		<meta name="twitter:image" content="https://appicoworld.vercel.app/ar/appico_logo.webp" />
 	{:else}
-		<title>vava| Global Trade & Industrial Raw Materials | Food, Fragrance & Cosmetics</title>
+		<title
+			>Appico World | Global Trade & Industrial Raw Materials | Food, Fragrance & Cosmetics</title
+		>
 
 		<meta
 			name="description"

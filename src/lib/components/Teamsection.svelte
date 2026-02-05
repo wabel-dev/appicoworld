@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as Card from '$lib/components/ui/card/index.js';
-	import gsap from 'gsap';
+	import { gsap } from 'gsap';
 
 	// Register the plugin
 
