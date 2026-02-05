@@ -7,45 +7,57 @@
 	import { m } from '$lib/paraglide/messages';
 	import { localizeHref } from '$lib/paraglide/runtime';
 
+	// Define links in one place
 	const navLinks = [
 		{ href: localizeHref('/#hero'), label: m.minor_legal_lemming_zip() },
 		{ href: localizeHref('/#services'), label: m.gray_ideal_lemming_fry() },
 		{ href: localizeHref('/#contact'), label: m.busy_long_polecat_win() },
 		{ href: localizeHref('/about'), label: m.left_jolly_llama_praise() }
 	];
-
 	const isActive = (href: string) => {
 		const url = new URL(href, page.url.origin);
+
+		// 1. Check if the pathnames match (e.g., /about === /about)
 		const pathMatch = page.url.pathname === url.pathname;
+
+		// 2. Check if the hash matches (e.g., #hero === #hero)
+		// If the href doesn't have a hash, we treat it as active if path matches
 		const hashMatch = url.hash ? page.url.hash === url.hash : true;
+
 		return pathMatch && hashMatch;
 	};
 </script>
 
 <nav class="glass-nav">
-	<a href="/" class="nav-logo">
+	<a
+		href="/"
+		class="font-orbitron flex shrink-0 items-center gap-2 text-xl font-bold tracking-widest uppercase md:text-2xl"
+	>
 		<Logo />
 	</a>
 
-	<ul class="nav-links">
+	<ul class="hidden list-none items-center gap-8 md:flex">
 		{#each navLinks as link}
 			<li>
-				<a href={link.href} class="nav-link-item {isActive(link.href) ? 'active' : ''}">
+				<a
+					href={link.href}
+					class={[
+						'text-sm font-medium transition-colors hover:text-primary',
+						isActive(link.href) ? 'font-bold text-primary' : ''
+					]}
+				>
 					{link.label}
 				</a>
 			</li>
 		{/each}
 	</ul>
 
-	<div class="nav-actions">
-		<div class="hide-mobile">
-			<LanguageToggle />
-		</div>
-		<div class="hide-mobile">
-			<Button size="sm" href="/#contact">
-				{m.topical_red_panther_win()}
-			</Button>
-		</div>
+	<div class="flex items-center gap-4">
+		<LanguageToggle class="hidden sm:inline-flex" />
+		<Button size="sm" class="hidden sm:inline-flex" href="/#contact"
+			>{m.topical_red_panther_win()}</Button
+		>
+
 		<MobileMenu links={navLinks} />
 	</div>
 </nav>
@@ -62,88 +74,14 @@
 		justify-content: space-between;
 		align-items: center;
 		z-index: 50;
-		/* Fallbacks for older Chrome */
-		background-color: rgb(255, 255, 255);
 		background-color: hsla(var(--background), 0.8);
-		-webkit-backdrop-filter: blur(12px);
 		backdrop-filter: blur(12px);
-		border-bottom: 1px solid #e2e8f0;
 		border-bottom: 1px solid hsl(var(--border));
 	}
 
-	.nav-logo {
-		display: flex;
-		align-items: center;
-		text-decoration: none;
-		font-family: 'Orbitron', sans-serif;
-		font-weight: 700;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: inherit;
-	}
-
-	/* Desktop Navigation Links */
-	.nav-links {
-		display: none; /* Hidden by default (mobile) */
-		list-style: none;
-		margin: 0;
-		padding: 0;
-	}
-
-	.nav-links li {
-		display: inline-block;
-		margin-left: 2rem; /* Using margin-left instead of gap */
-	}
-
-	.nav-links li:first-child {
-		margin-left: 0;
-	}
-
-	.nav-link-item {
-		font-size: 0.875rem;
-		font-weight: 500;
-		text-decoration: none;
-		transition: color 0.2s;
-		color: inherit;
-	}
-
-	.nav-link-item.active {
-		font-weight: 700;
-		color: hsl(var(--primary));
-	}
-
-	/* Action area (Buttons/Toggle) */
-	.nav-actions {
-		display: flex;
-		align-items: center;
-	}
-
-	/* Margin-based spacing for actions */
-	.nav-actions > * {
-		margin-left: 1rem;
-	}
-
-	.nav-actions > *:first-child {
-		margin-left: 0;
-	}
-
-	.hide-mobile {
-		display: none;
-	}
-
-	/* Media Queries for Desktop Support */
 	@media (min-width: 768px) {
 		.glass-nav {
 			padding: 0 3rem;
-		}
-
-		.nav-links {
-			display: flex;
-			align-items: center;
-		}
-
-		.hide-mobile {
-			display: inline-flex;
 		}
 	}
 </style>

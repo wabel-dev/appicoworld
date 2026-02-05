@@ -27,7 +27,6 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<title>new build</title>
 </svelte:head>
 <Navbar />
 {@render children()}
