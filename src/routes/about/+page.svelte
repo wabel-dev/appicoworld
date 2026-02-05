@@ -3,6 +3,7 @@
 	import Foundersection from '$lib/components/Foundersection.svelte';
 	import Teamsection from '$lib/components/Teamsection.svelte';
 	import Maps from '$lib/Maps.svelte';
+	import { getLocale } from '$lib/paraglide/runtime';
 
 	// Process steps data
 	const processSteps = [
@@ -34,7 +35,83 @@
 </script>
 
 <svelte:head>
-	<title>AppicoWorld | The Molecular Supply Chain</title>
+	{#if getLocale() === 'ar'}
+		<title
+			>أبيكو العالمية | التجارة العالمية والمواد الخام الصناعية | الأغذية والعطور ومستحضرات التجميل</title
+		>
+
+		<meta
+			name="description"
+			content="أبيكو العالمية هي شركة تجارة عالمية رائدة ووكيل تجاري متخصص في توريد المواد الخام لصناعات الأغذية والعطور ومستحضرات التجميل. خبراء في لوجستيات المواد ."
+		/>
+
+		<meta
+			name="keywords"
+			content="المواد الخام, الاستيراد والتصدير, الوكالة التجارية, إضافات غذائية, مركبات العطور, مكونات مستحضرات التجميل, المواد الكيميائية الصناعية, لوجستيات المواد , التجارة بين الشركات, التوريد العالمي, أبيكو العالمية, المؤسس والمالك وابل عطايا"
+		/>
+
+		<meta name="author" content="شركة أبيكو العالمية للتجارة" />
+		<meta name="copyright" content="شركة أبيكو العالمية للتجارة" />
+		<meta name="robots" content="index, follow" />
+
+		<!-- Open Graph for WhatsApp/Facebook (ARABIC) -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://appicoworld.vercel.app/ar" />
+		<meta property="og:title" content="أبيكو العالمية | مستقبل التوريد الصناعي" />
+		<meta
+			property="og:description"
+			content="تمثيل تجاري حصري للمصنعين العالميين. نوفر مواد خام عالية الجودة للأغذية والعطور ومستحضرات التجميل."
+		/>
+		<meta property="og:image" content="https://appicoworld.vercel.app/ar/appico_logo.webp" />
+		<meta property="og:site_name" content="أبيكو العالمية" />
+		<meta property="og:locale" content="ar_SA" />
+
+		<!-- Twitter Card (ARABIC) -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta
+			name="twitter:title"
+			content="أبيكو العالمية | المواد الخام الصناعية والخدمات اللوجستية"
+		/>
+		<meta
+			name="twitter:description"
+			content="سد الفجوة بين مختبرات التصنيع العالمية والإنتاج المحلي. توريد الأغذية والعطور ومستحضرات التجميل."
+		/>
+		<meta name="twitter:image" content="https://appicoworld.vercel.app/ar/appico_logo.webp" />
+	{:else}
+		<title
+			>Appico World | Global Trade & Industrial Raw Materials | Food, Fragrance & Cosmetics</title
+		>
+
+		<meta
+			name="description"
+			content="Appico World  is a premier global trading company & commercial agent specializing in raw material sourcing for the Food, Fragrance, and Cosmetic industries. Hazmat logistics experts."
+		/>
+
+		<meta
+			name="keywords"
+			content="Raw Materials, Import Export, Commercial Agency, Food Additives, Fragrance Compounds, Cosmetic Ingredients, Industrial Chemicals, Hazmat Logistics, B2B Trade, Global Sourcing, Appico World, Founder and Owner by Wabel Ataya "
+		/>
+
+		<meta name="author" content="Appico World Trading Co." />
+		<meta name="copyright" content="Appico World  Trading Co." />
+		<meta name="robots" content="index, follow" /> <meta property="og:type" content="website" />
+		<meta property="og:url" content="https://appicoworld.vercel.app/" />
+		<meta property="og:title" content="Appico World  | The Future of Industrial Sourcing" />
+		<meta
+			property="og:description"
+			content="Exclusive commercial representation for global manufacturers. We supply high-grade raw materials for Food, Fragrance, and Cosmetics."
+		/>
+		<meta property="og:image" content="https://appicoworld.vercel.app/appico_logo.webp" />
+		<meta property="og:site_name" content="Appico World" />
+
+		<meta name="twitter:card" content="https://appicoworld.vercel.app/appico_logo.webp" />
+		<meta name="twitter:title" content="Appico World | Industrial Raw Materials & Logistics" />
+		<meta
+			name="twitter:description"
+			content="Bridging the gap between global synthesis labs and local manufacturing. Food, Scent, & Cosmetic sourcing."
+		/>
+		<meta name="twitter:image" content="https://appicoworld.vercel.app/appico_logo.webp" />
+	{/if}
 </svelte:head>
 
 <!-- Hero Section -->

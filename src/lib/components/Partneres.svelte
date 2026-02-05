@@ -6,6 +6,7 @@
 	import ClassNames from 'embla-carousel-class-names';
 	import Autoplay from 'embla-carousel-autoplay';
 	import { m } from '$lib/paraglide/messages';
+	import { getLocale } from '$lib/paraglide/runtime';
 	const classNamesPlugin = ClassNames({
 		snapped: 'is-snapped'
 	});
@@ -20,6 +21,7 @@
 		{ src: Mane, alt: 'mane logo', desc: 'MANE', href: 'https://www.mane.com/' },
 		{ src: tcf, alt: 'tcf logo', desc: 'TCF', href: 'https://www.tcffragrance.com/' }
 	];
+	const dir = $derived(getLocale() === 'ar' ? 'rtl' : 'ltr');
 </script>
 
 {#snippet play_card(src: string, alt: string, desc: string, href: string)}
@@ -47,7 +49,8 @@
 	<Carousel.Root
 		class="w-full"
 		opts={{
-			align: 'center'
+			align: 'center',
+			direction: dir
 		}}
 		plugins={[classNamesPlugin, autoPlayPlugin]}
 	>

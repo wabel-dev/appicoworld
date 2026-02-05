@@ -51,7 +51,7 @@
 	</div>
 
 	<div class="mx-auto grid max-w-300 grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-7.5">
-		{#each [{ emoji: '👨‍🔬', role: 'HEAD OF SOURCING', name: 'Dr. Elias Thorne', bio: 'PhD in Organic Chemistry. Specializes in verifying the purity of essential oils.' }, { emoji: '👩‍💼', role: 'COMMERCIAL AGENT', name: 'Sarah Jenko', bio: 'Expert in international trade law and agency agreements. Manages European partnerships.' }, { emoji: '📦', role: 'LOGISTICS LEAD', name: 'Marcus K.', bio: 'Hazmat certified. Oversees the safe transport of volatile compounds across borders.' }] as member, i}
+		{#each [{ emoji: '👑', role: 'CEO & FOUNDER', name: 'Wabel Ataya', bio: 'Visionary entrepreneur with 6+ years of experience. Founded the company in 2019 and led it to international success.' }, { emoji: '🎯', role: 'DIRECTOR MANAGER', name: 'Omar Ataya', bio: 'Operations expert with extensive management background. Streamlines processes and ensures seamless team coordination.' }, { emoji: '📈', role: 'SALES MANAGER', name: 'Obada Ataya', bio: 'Sales strategist with a proven track record of expanding market share. Builds strong client relationships and drives revenue growth.' }] as member, i}
 			<div bind:this={cardElements[i]}>
 				<Card.Root
 					class="group h-full p-7.5 text-center transition-colors duration-300 hover:border-primary"
