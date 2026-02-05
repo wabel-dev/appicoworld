@@ -29,6 +29,6 @@ export default defineConfig({
 		// Target ES2015 for broad compatibility
 		target: 'es2015',
 		// Minify CSS in production
-		cssMinify: true
+		cssMinify: 'lightningcss'
 	}
 });
