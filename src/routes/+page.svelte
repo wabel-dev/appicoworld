@@ -8,12 +8,6 @@
 	import { superForm } from 'sveltekit-superforms';
 	import { zod4Client } from 'sveltekit-superforms/adapters';
 	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-	import Opencard from '$lib/components/Opencard.svelte';
-	import * as Carousel from '$lib/components/ui/carousel/index.js';
-	import Mane from '$lib/assets/mane.jpg';
-
-	import tcf from '$lib/assets/tcf.jpg';
 
 	// UI Components
 	import * as Card from '$lib/components/ui/card/index.js';
@@ -31,6 +25,7 @@
 	import { fade } from 'svelte/transition';
 
 	import { m } from '$lib/paraglide/messages';
+	import Partneres from '$lib/components/Partneres.svelte';
 
 	// Props & State
 	let { data }: { data: PageData } = $props();
@@ -96,8 +91,6 @@
 	// Animations
 	$effect(() => {
 		if (!herotitle || !herosubtitle) return;
-
-		gsap.registerPlugin(ScrollTrigger);
 
 		// Use gsap.context for easy cleanup
 		const ctx = gsap.context(() => {
@@ -240,14 +233,11 @@
 	</div>
 {/if}
 <header
-	class="relative flex h-screen items-center justify-center overflow-hidden px-5 text-center"
+	class="relative my-4 flex h-screen items-center justify-center overflow-hidden px-5 text-center"
 	id="hero"
 >
 	<div class="z-10 max-w-3xl">
-		<h1
-			class="hero-title font-orbitron mb-5 text-5xl leading-tight uppercase md:text-7xl"
-			bind:this={herotitle}
-		>
+		<h1 class="hero-title mb-5 text-5xl leading-tight uppercase md:text-7xl" bind:this={herotitle}>
 			{m.tired_ornate_fox_soar()}<br /><span class="text-primary"
 				>{m.less_spry_nuthatch_borrow()}</span
 			>
@@ -268,7 +258,7 @@
 
 <section class="relative bg-background px-6 py-16 md:px-12 md:py-24" id="services">
 	<div class="mb-12 border-l-4 border-primary pl-5 md:mb-16">
-		<h2 class="font-orbitron text-3xl uppercase md:text-4xl">{m.front_teary_florian_spur()}</h2>
+		<h2 class="text-3xl uppercase md:text-4xl">{m.front_teary_florian_spur()}</h2>
 		<p class="mt-2 text-sm text-muted-foreground md:text-base">
 			{m.due_free_kangaroo_kiss()}
 		</p>
@@ -315,13 +305,21 @@
 	</div>
 </section>
 <data.stats />
+<section class="relative bg-background px-6 py-16 md:px-12 md:py-24" id="services">
+	<div class="mb-12 border-l-4 border-primary pl-5 md:mb-16">
+		<h2 class="text-3xl uppercase md:text-4xl">our Partners</h2>
+		<p class="mt-2 text-sm text-muted-foreground md:text-base">
+			{m.due_free_kangaroo_kiss()}
+		</p>
+	</div>
+
+	<Partneres />
+</section>
 <data.compuands />
 <section class="flex justify-center bg-accent/5 px-6 py-16 md:px-12 md:py-24" id="contact">
 	<div class="grid w-full max-w-5xl grid-cols-1 gap-12 lg:grid-cols-5">
 		<div class="lg:col-span-2">
-			<h2 class="font-orbitron mb-4 text-4xl tracking-wider uppercase md:text-5xl">
-				Initiate Protocol
-			</h2>
+			<h2 class="mb-4 text-4xl tracking-wider uppercase md:text-5xl">Initiate Protocol</h2>
 			<p class="mb-6 text-muted-foreground">
 				Ready to upgrade your supply chain? Send us a transmission.
 			</p>
@@ -417,35 +415,3 @@
 		</form>
 	</div>
 </section>
-<div class="w-full px-12">
-	<Carousel.Root class="w-full" opts={{ align: 'center', loop: true }}>
-		<Carousel.Content class="embla__slide -ms-1">
-			<Carousel.Item class="ps-1 md:basis-1/2 lg:basis-1/3">
-				<Opencard src={Mane} alt="mane logo" desc="Mane" />
-			</Carousel.Item>
-			<Carousel.Item class="h-full md:basis-1/2 lg:basis-1/3">
-				<Opencard src={tcf} alt="tcf logo" desc="tcf" />
-			</Carousel.Item>
-		</Carousel.Content>
-
-		<Carousel.Previous />
-
-		<Carousel.Next />
-	</Carousel.Root>
-</div>
-
-<style>
-	:global(.embla__slide:not(.is-snapped)) {
-		opacity: 0.3;
-		/* background-color: red;
-		filter: grayscale(1); */
-	}
-
-	/* --- Glass Navbar --- */
-
-	:global(.cyber-card:hover) {
-		transform: translateY(-0.5rem) !important; /* -translate-y-2 */
-
-		border-color: hsl(var(--primary)) !important;
-	}
-</style>

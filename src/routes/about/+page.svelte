@@ -1,60 +1,8 @@
 <script>
-	import { onMount } from 'svelte';
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
 	import Abouthero from '$lib/components/Abouthero.svelte';
 	import Foundersection from '$lib/components/Foundersection.svelte';
 	import Teamsection from '$lib/components/Teamsection.svelte';
-
-	// Register GSAP plugin
-	gsap.registerPlugin(ScrollTrigger);
-
-	onMount(() => {
-		// Hero Fade In Animation
-		gsap.fromTo(
-			'.anim-fade',
-			{ opacity: 0, y: 20 },
-			{ opacity: 1, y: 0, duration: 1, stagger: 0.2 }
-		);
-
-		// Founder Section Slide Animations
-		ScrollTrigger.create({
-			trigger: '.founder-section',
-			start: 'top 80%',
-			onEnter: () => {
-				gsap.fromTo(
-					'.anim-slide-right',
-					{ x: -50, opacity: 0 },
-					{ x: 0, opacity: 1, duration: 0.8 }
-				);
-				gsap.fromTo(
-					'.anim-slide-left',
-					{ x: 50, opacity: 0 },
-					{ x: 0, opacity: 1, duration: 0.8, delay: 0.2 }
-				);
-			}
-		});
-
-		// Upward Animation for Multiple Sections
-		document.querySelectorAll('.anim-up').forEach((element) => {
-			ScrollTrigger.create({
-				trigger: element,
-				start: 'top 85%',
-				onEnter: () => {
-					gsap.fromTo(
-						element,
-						{ y: 50, opacity: 0 },
-						{ y: 0, opacity: 1, duration: 0.6, ease: 'power2.out' }
-					);
-				}
-			});
-		});
-
-		// Cleanup function for ScrollTrigger
-		return () => {
-			ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-		};
-	});
+	import Maps from '$lib/Maps.svelte';
 
 	// Process steps data
 	const processSteps = [
@@ -81,13 +29,12 @@
 		{ label: 'COORDINATES', value: '33.5138° N, 36.2765° E' },
 		{ label: 'SECTOR', value: 'Industrial Zone B, Facility 404' },
 		{ label: 'CITY / REGION', value: 'Damascus Free Trade Zone' },
-		{ label: 'OPERATING HOURS', value: '0800 - 1800 (GMT+3)' },
-		{ label: 'STATUS', value: 'ACTIVE', isStatus: true }
+		{ label: 'OPERATING HOURS', value: '0800 - 1800 (GMT+3)' }
 	];
 </script>
 
 <svelte:head>
-	<title>About AETHER | The Molecular Supply Chain</title>
+	<title>AppicoWorld | The Molecular Supply Chain</title>
 </svelte:head>
 
 <!-- Hero Section -->
@@ -100,7 +47,7 @@
 <Teamsection />
 
 <!-- Protocol Section -->
-<section class="border-t border-border bg-background px-6 py-24 md:py-32">
+<section class="px-6 py-24 md:py-32">
 	<div class="mx-auto max-w-7xl">
 		<!-- Section Header -->
 		<div class="mb-16 text-center">
@@ -141,41 +88,63 @@
 </section>
 
 <!-- Location Section -->
-<section class="mx-auto max-w-6xl px-6 py-24 text-center md:py-32">
-	<!-- Section Header -->
-	<h2 class="anim-up mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">Base of Operations</h2>
-	<p class="anim-up mb-12 text-lg text-muted-foreground">Global coordination hub.</p>
 
-	<!-- Data Terminal -->
-	<div
-		class="anim-up relative mx-auto max-w-3xl border border-border bg-black p-8 text-left shadow-2xl md:p-12"
-	>
-		<!-- Security Badge -->
-		<div class="absolute top-3 right-5 font-mono text-xs text-green-500 opacity-70">
-			SECURE CONNECTION ESTABLISHED
+<section class="w-full bg-background py-24 md:py-32">
+	<div class="mx-auto max-w-7xl px-4 md:px-8">
+		<div class="mb-12 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+			<div>
+				<h2 class="anim-up text-3xl font-bold tracking-tight md:text-5xl">
+					Base of <span class="text-primary">Operations</span>
+				</h2>
+				<p class="anim-up mt-2 text-lg text-muted-foreground">
+					Global coordination hub & telemetry.
+				</p>
+			</div>
 		</div>
 
-		<!-- Data Rows -->
-		{#each locationData as data, index}
-			<div
-				class="flex items-center justify-between py-4 {index < locationData.length - 1
-					? 'border-b border-border'
-					: ''}"
-			>
-				<span class="font-mono text-sm text-red-600 md:text-base">{data.label}</span>
-				<span
-					class="{data.isStatus
-						? 'text-green-500'
-						: 'text-muted-foreground'} font-mono text-sm md:text-base"
-				>
-					{data.value}
-				</span>
+		<div class="grid gap-6 lg:grid-cols-3 lg:gap-8">
+			<div class="anim-up border border-border bg-card p-6 shadow-sm lg:col-span-1">
+				<div class="space-y-4">
+					<div class="text-xs font-semibold tracking-wider uppercase">Live Metrics</div>
+
+					<table class="w-full text-left">
+						<thead>
+							<tr class="border-b border-border">
+								<th class="pb-2 text-xs font-medium text-muted-foreground uppercase">Parameter</th>
+								<th class="pb-2 text-right text-xs font-medium text-muted-foreground uppercase"
+									>Status</th
+								>
+							</tr>
+						</thead>
+						<tbody class="divide-y divide-border/50">
+							{#each locationData as data}
+								<tr class="group transition-colors hover:bg-muted/50">
+									<td class="py-3 text-sm font-medium group-hover:text-primary">
+										{data.label}
+									</td>
+									<td
+										class="py-3 text-right text-sm tabular-nums transition-colors group-hover:text-primary"
+									>
+										{data.value}
+									</td>
+								</tr>
+							{/each}
+						</tbody>
+					</table>
+				</div>
 			</div>
-		{/each}
+
+			<div
+				class="anim-up overflow-hidden rounded-xl border border-border bg-muted/20 shadow-sm lg:col-span-2"
+			>
+				<div class="relative h-full min-h-100 w-full">
+					<Maps />
+
+					<div
+						class="pointer-events-none absolute inset-0 bg-linear-to-t from-background/80 to-transparent"
+					></div>
+				</div>
+			</div>
+		</div>
 	</div>
 </section>
-
-<!-- Footer -->
-<footer class="border-t border-border px-8 py-12 text-center">
-	<p class="text-sm text-muted-foreground">Molecular science and industrial application.</p>
-</footer>

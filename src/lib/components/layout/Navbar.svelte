@@ -6,6 +6,7 @@
 	import { page } from '$app/state';
 	import { m } from '$lib/paraglide/messages';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import ThemeToggle from '$lib/components/layout/Theme-toggle.svelte';
 
 	// Define links in one place
 	const navLinks = [
@@ -54,6 +55,7 @@
 
 	<div class="flex items-center gap-4">
 		<LanguageToggle class="hidden sm:inline-flex" />
+		<ThemeToggle class="hidden md:inline-flex" />
 		<Button size="sm" class="hidden sm:inline-flex" href="/#contact"
 			>{m.topical_red_panther_win()}</Button
 		>

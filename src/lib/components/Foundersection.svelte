@@ -1,165 +1,70 @@
-<section class="founder-section">
-	<div class="stats-matrix anim-slide-right">
-		<div class="stat-item">
-			<span class="stat-number">15+</span>
-			<span class="stat-label">Global Agencies</span>
+<section
+	class="mx-auto grid max-w-300 grid-cols-1 items-center gap-10 px-6 py-16 md:grid-cols-2 md:gap-15 md:px-12.5 md:py-25"
+>
+	<div
+		class="anim-slide-right relative order-2 mt-8 grid grid-cols-1 gap-5 border border-border p-6 sm:grid-cols-2 md:order-1 md:mt-16 md:p-7.5"
+		style="clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);"
+	>
+		<div
+			class="stat-item border border-border bg-card p-6 text-center transition-all duration-300 hover:z-10 hover:scale-105 hover:shadow-[0_0_15px_rgba(255,46,46,0.2)] md:p-[30px_20px]"
+		>
+			<span class="block text-3xl font-bold text-foreground md:text-[2.5rem]">15+</span>
+			<span
+				class="mt-1 block text-sm font-semibold tracking-wider text-primary uppercase md:text-base"
+				>Global Agencies</span
+			>
 		</div>
-		<div class="stat-item">
-			<span class="stat-number">40</span>
-			<span class="stat-label">Partner Nations</span>
+
+		<div
+			class="stat-item border border-border bg-card p-6 text-center transition-all duration-300 hover:z-10 hover:scale-105 hover:shadow-[0_0_15px_rgba(255,46,46,0.2)] md:p-[30px_20px]"
+		>
+			<span class="block text-3xl font-bold text-foreground md:text-[2.5rem]">40</span>
+			<span
+				class="mt-1 block text-sm font-semibold tracking-wider text-primary uppercase md:text-base"
+				>Partner Nations</span
+			>
 		</div>
-		<div class="stat-item">
-			<span class="stat-number">8.5k</span>
-			<span class="stat-label">Tons / Annum</span>
+
+		<div
+			class="stat-item border border-border bg-card p-6 text-center transition-all duration-300 hover:z-10 hover:scale-105 hover:shadow-[0_0_15px_rgba(255,46,46,0.2)] md:p-[30px_20px]"
+		>
+			<span class="block text-3xl font-bold text-foreground md:text-[2.5rem]">8.5k</span>
+			<span
+				class="mt-1 block text-sm font-semibold tracking-wider text-primary uppercase md:text-base"
+				>Tons / Annum</span
+			>
 		</div>
-		<div class="stat-item">
-			<span class="stat-number">100%</span>
-			<span class="stat-label">Compliance</span>
+
+		<div
+			class="stat-item border border-border bg-card p-6 text-center transition-all duration-300 hover:z-10 hover:scale-105 hover:shadow-[0_0_15px_rgba(255,46,46,0.2)] md:p-[30px_20px]"
+		>
+			<span class="block text-3xl font-bold text-foreground md:text-[2.5rem]">100%</span>
+			<span
+				class="mt-1 block text-sm font-semibold tracking-wider text-primary uppercase md:text-base"
+				>Compliance</span
+			>
 		</div>
-		<div class="tech-line tech-line-bottom"></div>
-		<div class="tech-line tech-line-top"></div>
+
+		<div class="absolute right-2.5 bottom-2.5 hidden h-0.5 w-12.5 bg-primary sm:block"></div>
+		<div class="absolute top-2.5 left-2.5 hidden h-7.5 w-0.5 bg-primary sm:block"></div>
 	</div>
 
-	<div class="founder-text anim-slide-left">
-		<h4 class="text-red">Corporate Trajectory</h4>
-		<h2 class="section-title">The Standard of Purity</h2>
-		<p class="founder-quote">
+	<div class="anim-slide-left order-1 md:order-2">
+		<h4 class="font-bold tracking-widest text-primary uppercase">Corporate Trajectory</h4>
+		<h2 class="mb-3 text-3xl leading-tight font-bold md:mb-2.5 md:text-[2.5rem]">
+			The Standard of Purity
+		</h2>
+		<p class="mb-5 text-lg italic opacity-90 md:text-[1.1rem]">
 			"We don't just trade commodities; we engineer the supply chain. In an industry defined by
-			volatility, AETHER provides the constant—guaranteeing molecular purity and logistical
-			precision."
+			volatility, AETHER provides the constant."
 		</p>
-		<p class="founder-description">
+		<p class="text-base leading-relaxed text-muted-foreground">
 			Established to bridge the gap between European synthesis labs and Middle Eastern industrial
-			manufacturing, AETHER has evolved into a premier commercial agency. We act as the exclusive
-			representative for top-tier manufacturers, ensuring that our clients receive unadulterated raw
-			materials for food production, fine fragrance, and cosmetics.
+			manufacturing, AETHER has evolved into a premier commercial agency.
 		</p>
-		<br />
-		<div class="founder-signature">
-			// ALEXEI V. ROSTOVA <span class="founder-title">[DIRECTOR]</span>
+
+		<div class="mt-8 text-xs font-bold tracking-[2px] md:text-[0.9rem]">
+			// ALEXEI V. ROSTOVA <span class="font-normal text-muted-foreground">[DIRECTOR]</span>
 		</div>
 	</div>
 </section>
-
-<style>
-	/* --- FOUNDER / STATS SECTION --- */
-	.founder-section {
-		padding: 100px 50px;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 60px;
-		align-items: center;
-		max-width: 1200px;
-		margin: 0 auto;
-	}
-
-	.stats-matrix {
-		margin-top: 4rem;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 20px;
-		padding: 30px;
-		background: rgba(255, 46, 46, 0.05);
-		border: 1px solid hsl(var(--border));
-		position: relative;
-		clip-path: polygon(10% 0, 100% 0, 100% 90%, 90% 100%, 0 100%, 0 10%);
-	}
-
-	.stat-item {
-		border: 1px solid hsl(var(--border));
-		padding: 30px 20px;
-		text-align: center;
-		transition: all 0.3s;
-		background: hsl(var(--card));
-	}
-
-	.stat-item:hover {
-		transform: scale(1.05);
-		box-shadow: 0 0 15px rgba(255, 46, 46, 0.2);
-		z-index: 10;
-	}
-
-	.stat-number {
-		display: block;
-		font-size: 2.5rem;
-		color: hsl(var(--foreground));
-		font-weight: 700;
-	}
-
-	.stat-label {
-		color: #ff2e2e;
-		letter-spacing: 1px;
-		font-weight: 600;
-		margin-top: 5px;
-		display: block;
-	}
-
-	.tech-line {
-		position: absolute;
-		background: #ff2e2e;
-	}
-
-	.tech-line-bottom {
-		bottom: 10px;
-		right: 10px;
-		width: 50px;
-		height: 2px;
-	}
-
-	.tech-line-top {
-		top: 10px;
-		left: 10px;
-		width: 2px;
-		height: 30px;
-	}
-
-	.founder-quote {
-		margin-bottom: 20px;
-		font-size: 1.1rem;
-	}
-
-	.founder-description {
-		color: hsl(var(--muted-foreground));
-	}
-
-	.founder-signature {
-		font-size: 0.9rem;
-		letter-spacing: 2px;
-	}
-
-	.founder-title {
-		color: hsl(var(--muted-foreground));
-	}
-	.section-title {
-		font-size: 2.5rem;
-		margin-bottom: 10px;
-		font-weight: 700;
-	}
-
-	.section-subtitle {
-		color: hsl(var(--muted-foreground));
-		font-size: 1.1rem;
-		margin-bottom: 50px;
-		letter-spacing: 1px;
-	}
-
-	.section-header {
-		text-align: center;
-		margin-bottom: 60px;
-	}
-
-	.brand {
-		font-size: 1.5rem;
-		font-weight: 700;
-		letter-spacing: 2px;
-		color: hsl(var(--foreground));
-	}
-
-	.brand span {
-		color: #ff2e2e;
-	}
-
-	.system-status {
-		font-weight: bold;
-	}
-</style>

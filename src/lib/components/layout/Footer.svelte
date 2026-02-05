@@ -3,3 +3,6 @@
 
 	<br />
 </footer>
+<div class="flex h-8 w-full items-center justify-center">
+	<span>Made with by A.O.K</span>
+</div>
