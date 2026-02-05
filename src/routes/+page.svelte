@@ -53,13 +53,13 @@
 			{
 				number: '01',
 				title: 'Food Raw Materials',
-				description:
-					'Providing premium raw materials and ingredients for the food industry.'
+				description: 'Providing premium raw materials and ingredients for the food industry.'
 			},
 			{
 				number: '02',
 				title: 'Aromatics & Esters',
-				description: 'Your premier international partner acting as distinguished suppliers around the world.'
+				description:
+					'Your premier international partner acting as distinguished suppliers around the world.'
 			},
 			{
 				number: '03',
@@ -312,20 +312,22 @@
 		</p>
 	</div>
 
-<data.partners />
+	<data.partners />
 </section>
 <data.compuands />
 <section class="flex justify-center bg-accent/5 px-6 py-16 md:px-12 md:py-24" id="contact">
 	<div class="grid w-full max-w-5xl grid-cols-1 gap-12 lg:grid-cols-5">
 		<div class="lg:col-span-2">
-			<h2 class="mb-4 text-4xl tracking-wider uppercase md:text-5xl">Initiate Protocol</h2>
+			<h2 class="mb-4 text-4xl tracking-wider uppercase md:text-5xl">
+				{m.frail_real_otter_jump()}
+			</h2>
 			<p class="mb-6 text-muted-foreground">
-				Ready to upgrade your supply chain? Send us a transmission.
+				{m.plain_mild_badger_enrich()}
 			</p>
 
 			{#if $message}
 				<div class="mt-6 animate-pulse border-l-2 border-primary bg-primary/10 p-4">
-					<p class="text-xs font-bold text-primary uppercase">System Status</p>
+					<p class="text-xs font-bold text-primary uppercase">{m.topical_smart_tiger_cook()}</p>
 					<p class="text-sm text-muted-foreground">{$message}</p>
 				</div>
 			{/if}
@@ -334,7 +336,7 @@
 		<form method="POST" use:enhance class="lg:col-span-3" autocomplete="on">
 			<div class="grid grid-cols-1 gap-x-4 gap-y-4 md:grid-cols-2">
 				<Field.Field class="space-y-1">
-					<Field.Label class="text-xs uppercase">Name</Field.Label>
+					<Field.Label class="text-xs uppercase">{m.sunny_less_warthog_pet()}</Field.Label>
 					<Input
 						type="text"
 						name="name"
@@ -347,7 +349,7 @@
 				</Field.Field>
 
 				<Field.Field class="space-y-1">
-					<Field.Label class="text-xs uppercase">Company</Field.Label>
+					<Field.Label class="text-xs uppercase">{m.happy_jumpy_ostrich_dash()}</Field.Label>
 					<Input
 						type="text"
 						name="company"
@@ -360,7 +362,7 @@
 				</Field.Field>
 
 				<Field.Field class="space-y-1">
-					<Field.Label class="text-xs uppercase">Email</Field.Label>
+					<Field.Label class="text-xs uppercase">{m.tame_simple_peacock_file()}</Field.Label>
 					<Input
 						type="email"
 						name="email"
@@ -373,15 +375,15 @@
 				</Field.Field>
 
 				<Field.Field class="space-y-1">
-					<Field.Label class="text-xs uppercase">Inquiry Protocol</Field.Label>
+					<Field.Label class="text-xs uppercase">{m.smart_orange_tiger_tap()}</Field.Label>
 					<Select.Root type="single" name="inquiryProtocol" bind:value={$formData.inquiryProtocol}>
 						<Select.Trigger class="h-10 {input_class}">
 							{$formData.inquiryProtocol || 'Select Protocol...'}
 						</Select.Trigger>
 						<Select.Content>
-							<Select.Item value="export">Export Request</Select.Item>
-							<Select.Item value="agency">Agency Representation</Select.Item>
-							<Select.Item value="import">Material Sourcing (Import)</Select.Item>
+							<Select.Item value="export">{m.even_early_halibut_pat()}</Select.Item>
+							<Select.Item value="agency">{m.happy_lofty_guppy_animate()}</Select.Item>
+							<Select.Item value="import">{m.jumpy_born_cow_gaze()}</Select.Item>
 						</Select.Content>
 					</Select.Root>
 					{#if $errors.inquiryProtocol}<Field.Error class=" text-[10px]"
@@ -390,7 +392,7 @@
 				</Field.Field>
 
 				<Field.Field class="space-y-1 md:col-span-2">
-					<Field.Label class="text-xs uppercase">Message</Field.Label>
+					<Field.Label class="text-xs uppercase">{m.orange_mushy_alligator_play()}</Field.Label>
 					<Textarea
 						name="message"
 						rows={4}
@@ -408,7 +410,7 @@
 				</Field.Field>
 
 				<div class="pt-2 md:col-span-2">
-					<Button type="submit" class="w-full px-8 md:w-max">Execute Transmission</Button>
+					<Button type="submit" class="w-full px-8 md:w-max">{m.cute_active_mantis_agree()}</Button>
 				</div>
 			</div>
 		</form>
