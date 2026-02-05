@@ -1,5 +1,6 @@
 import { paraglideVitePlugin } from '@inlang/paraglide-js';
-import autoprefixer from 'autoprefixer';
+import browserslist from 'browserslist';
+import { browserslistToTargets } from 'lightningcss';
 import tailwindcss from '@tailwindcss/vite';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
@@ -16,28 +17,17 @@ export default defineConfig({
 	],
 
 	css: {
-		postcss: {
-			plugins: [
-				autoprefixer({
-					// Target browsers for vendor prefixing
-					overrideBrowserslist: [
-						'Chrome >= 60',
-						'Firefox >= 60',
-						'Safari >= 12',
-						'Edge >= 79',
-						'last 2 versions',
-						'> 1%',
-						'not dead'
-					]
-				})
-			]
+		// Use lightningcss to process CSS (it handles prefixing & transpiling)
+		transformer: 'lightningcss',
+		lightningcss: {
+			// Target Chrome 80+ (covers your old laptops).
+			// This forces Tailwind to remove "@layer" wrappers and fix syntax.
+			targets: browserslistToTargets(browserslist('>= 0.25%, Chrome >= 80'))
 		}
 	},
 	build: {
 		// Target ES2015 for broad compatibility
 		target: 'es2015',
-		// Enable CSS code splitting for better performance
-		cssCodeSplit: true,
 		// Minify CSS in production
 		cssMinify: true
 	}
