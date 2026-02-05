@@ -7,7 +7,7 @@
 	import Footer from '$lib/components/layout/Footer.svelte';
 	import { onNavigate } from '$app/navigation';
 	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
+	import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 	import { ModeWatcher } from 'mode-watcher';
 
 	let { children } = $props();

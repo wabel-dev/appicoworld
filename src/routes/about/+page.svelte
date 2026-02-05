@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Abouthero from '$lib/components/Abouthero.svelte';
 	import Foundersection from '$lib/components/Foundersection.svelte';
 	import Teamsection from '$lib/components/Teamsection.svelte';
