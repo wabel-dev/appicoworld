@@ -14,8 +14,11 @@ export default defineConfig({
 			strategy: ['url', 'cookie', 'baseLocale']
 		}),
 		TailwindLegacyPlugin({
-			tailwindConfig: 'tailwind.config.legacy.js'
-			// Point to the file you made in Step 2
+			tailwindConfig: 'tailwind.config.legacy.js',
+			assetsDir: '.vercel/output/static/_app/immutable/assets', // or .netlify/...
+			publicPath: '/_app/immutable/assets/',
+			buildDir: '.vercel/output/static' ,
+			injectInHTML: true,
 		})
 	]
 });

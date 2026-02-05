@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{html,js,svelte,ts}'], // Adjust based on your framework
+	content: ['./build/client/**/*.{html,js}'], // Adjust based on your framework
 	darkMode: ['class'],
 	theme: {
 		extend: {
@@ -66,5 +66,18 @@ export default {
 			}
 		}
 	},
-	plugins: []
+	plugins: [
+		function ({ addBase }) {
+			addBase({
+				button: {
+					backgroundColor: 'transparent',
+					backgroundImage: 'none',
+					padding: 0,
+					border: 'none',
+					outline: 'none',
+					cursor: 'pointer'
+				}
+			});
+		}
+	]
 };
