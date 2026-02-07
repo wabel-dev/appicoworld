@@ -13,7 +13,11 @@
 
 	// New Social Links Array
 	const socialLinks = [
-		{ href: 'https://www.facebook.com/share/1E3r8Pxjb4/?mibextid=wwXIfr', label: 'Facebook', icon: Facebook },
+		{
+			href: 'https://www.facebook.com/share/1E3r8Pxjb4/?mibextid=wwXIfr',
+			label: 'Facebook',
+			icon: Facebook
+		},
 		{ href: '#', label: 'Instagram', icon: Instagram },
 		{ href: 'https://wa.me/message/FC5JWJZYR2R6D1', label: 'WhatsApp', icon: MessageCircle }
 	];
@@ -28,9 +32,6 @@
 				<h2 class="text-xl font-bold tracking-tight text-foreground">
 					{m.bad_civil_alpaca_cuddle()}
 				</h2>
-				<p class="max-w-xs text-sm leading-relaxed text-muted-foreground">
-					{m.mean_stale_hedgehog_kick()}
-				</p>
 			</div>
 
 			<div class="space-y-4">
