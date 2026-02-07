@@ -12,6 +12,7 @@
 	const navLinks = [
 		{ href: localizeHref('/#hero'), label: m.minor_legal_lemming_zip() },
 		{ href: localizeHref('/#services'), label: m.gray_ideal_lemming_fry() },
+		{ href: localizeHref('/#partners'), label: 'Partners' },
 		{ href: localizeHref('/#contact'), label: m.busy_long_polecat_win() },
 		{ href: localizeHref('/about'), label: m.left_jolly_llama_praise() }
 	];

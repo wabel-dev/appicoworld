@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	// IMPORTANT: Point to SvelteKit's build output
-	content: ['./.vercel/output/static/**/*.{html,js}'],
+	content: ['./.svelte-kit/output/client/**/*.{html,js}'],
 
 	darkMode: ['class'],
 

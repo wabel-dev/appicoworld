@@ -57,9 +57,9 @@
 			},
 			{
 				number: '02',
-				title: 'Aromatics & Esters',
+				title: 'Aroma Chemicals & Supplies',
 				description:
-					'Your premier international partner acting as distinguished suppliers around the world.'
+					'Bringing international fragrance expertise and essential supplies to the local industry through trusted global partners.'
 			},
 			{
 				number: '03',
@@ -306,7 +306,7 @@
 	</div>
 </section>
 <data.stats />
-<section class="relative bg-background px-6 py-16 md:px-12 md:py-24" id="services">
+<section class="relative bg-background px-6 py-16 md:px-12 md:py-24" id="partners">
 	<div class="mb-12 border-l-4 border-primary pl-5 md:mb-16">
 		<h2 class="text-3xl uppercase md:text-4xl">Our Partners</h2>
 		<p class="mt-2 text-sm text-muted-foreground md:text-base">
