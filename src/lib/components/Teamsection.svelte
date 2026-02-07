@@ -42,12 +42,6 @@
 					role: 'مدير العمليات',
 					name: 'عمر عطايا',
 					bio: 'خبير في العمليات اللوجستية وإدارة سلاسل الإمداد. يعمل على تحسين العمليات وضمان التنسيق السلس بين الفرق العالمية.'
-				},
-				{
-					icon: BarChart3,
-					role: 'مدير المبيعات',
-					name: 'عبادة عطايا',
-					bio: 'خبير استراتيجي في تطوير الأسواق. متخصص في بناء علاقات قوية مع العملاء وتوسيع نطاق توريد المواد الخام الصناعية.'
 				}
 			]
 		},
@@ -66,12 +60,6 @@
 					role: 'Director of Operations',
 					name: 'Omar Ataya',
 					bio: 'Specialist in logistics and supply chain management. Streamlines industrial processes and ensures seamless cross-border coordination.'
-				},
-				{
-					icon: BarChart3,
-					role: 'Sales Manager',
-					name: 'Obada Ataya',
-					bio: 'Strategist with a focus on market penetration. Builds long-term partnerships with manufacturers to drive regional growth and supply.'
 				}
 			]
 		}

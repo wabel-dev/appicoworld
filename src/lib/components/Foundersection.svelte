@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { m } from '$lib/paraglide/messages';
 	import { getLocale } from '$lib/paraglide/runtime';
 
 	// Translation Dictionary
@@ -7,7 +8,7 @@
 			label: 'التوريد العالمي',
 			title: 'تأمين الرابط الصناعي',
 			quote:
-				'نحن لا نقوم بمجرد نقل المواد؛ نحن نؤمن القواعد الكيميائية لإنتاجكم. في الأسواق المتقلبة، أبيكو العالمية هي الثابت.',
+				'نحن لا ننقل المواد فحسب، بل نؤمّن الركائز الأساسية لإنتاجكم. ففي الأسواق المتقلبة، تظل أبيكو وورلد هي الشريك الثابت.',
 			description:
 				'تأسست أبيكو العالمية لتوفير رابط مباشر بين مختبرات التصنيع العالمية والتصنيع الإقليمي، وقد تطورت لتصبح وكالة رائدة في قطاعات الأغذية والعطور ومستحضرات التجميل. نحن متخصصون في الخدمات اللوجستية المعقدة للمركبات الخام، لضمان مطابقة كل جرام يتم تسليمه لمواصفاتكم الدقيقة.',
 			stats: ['وكالات مباشرة', 'مصادر توريد', 'طن متري / سنوياً', 'تدقيق دفعات الإنتاج'],
@@ -17,7 +18,7 @@
 			label: 'Global Procurement',
 			title: 'Securing the Industrial Link',
 			quote:
-				'We do not simply move materials; we secure the chemical foundations of your production. In unpredictable markets, Appico World is the constant.',
+				'We do not simply move materials; we secure the raw materials foundations of your production. In unpredictable markets, Appico World is the constant.',
 			description:
 				'Established to provide a direct link between global synthesis labs and regional manufacturing, Appico World has evolved into a premier agency for the Food, Fragrance, and Cosmetic industries. We specialize in the high-stakes logistics of raw compounds, ensuring every gram delivered meets your exact specifications.',
 			stats: ['Direct Agencies', 'Supply Origins', 'Metric Tons / Annum', 'Batch Audited'],
@@ -60,7 +61,7 @@
 		<div
 			class="stat-item border border-border bg-card p-6 text-center transition-all duration-300 hover:z-10 hover:scale-105 hover:shadow-[0_0_15px_rgba(255,46,46,0.2)] md:p-[30px_20px]"
 		>
-			<span class="block text-3xl font-bold text-foreground md:text-[2.5rem]">8.5k</span>
+			<span class="block text-3xl font-bold text-foreground md:text-[2.5rem]">4k</span>
 			<span
 				class="mt-1 block text-sm font-semibold tracking-wider text-primary uppercase md:text-base"
 				>{content.stats[2]}</span
@@ -94,7 +95,7 @@
 		</p>
 
 		<div class="mt-8 text-xs font-bold tracking-[2px] md:text-[0.9rem]">
-			// وابل عطايا <span class="font-normal text-muted-foreground">{content.role}</span>
+			{m.warm_frail_tortoise_ask()} <span class="font-normal text-muted-foreground">{content.role}</span>
 		</div>
 	</div>
 </section>

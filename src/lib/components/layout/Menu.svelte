@@ -7,6 +7,7 @@
 	import { m } from '$lib/paraglide/messages';
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import ThemeToggle from './Theme-toggle.svelte';
+	import LanguageToggle from '../LanguageToggle.svelte';
 
 	// Svelte 5 Runes: Define props
 	let { links = [] }: { links: { href: string; label: string }[] } = $props();
@@ -61,6 +62,7 @@
 		</nav>
 		<Sheet.Footer>
 			<ThemeToggle class="w-full " />
+			<LanguageToggle class="w-full " />
 		</Sheet.Footer>
 	</Sheet.Content>
 </Sheet.Root>
