@@ -7,12 +7,6 @@ import TailwindLegacyPlugin from 'vite-plugin-tailwind-legacy';
 export default defineConfig({
 	plugins: [
 		tailwindcss(),
-		sveltekit(),
-		paraglideVitePlugin({
-			project: './project.inlang',
-			outdir: './src/lib/paraglide',
-			strategy: ['url', 'cookie', 'baseLocale']
-		}),
 		TailwindLegacyPlugin({
 			tailwindConfig: 'tailwind.config.legacy.js',
 			// SvelteKit outputs static assets to this folder
@@ -24,6 +18,13 @@ export default defineConfig({
 			// The name of your CSS file to remove in legacy browsers
 			deleteStyles: ['layout'],
 			injectInHTML: true
+		}),
+		sveltekit(),
+
+		paraglideVitePlugin({
+			project: './project.inlang',
+			outdir: './src/lib/paraglide',
+			strategy: ['url', 'cookie', 'baseLocale']
 		})
 	]
 });
