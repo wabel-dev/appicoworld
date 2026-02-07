@@ -86,6 +86,18 @@
 			}
 		]
 	};
+	const protocolLabels = {
+		export: m.even_early_halibut_pat(),
+		agency: m.happy_lofty_guppy_animate(),
+		import: m.jumpy_born_cow_gaze()
+	};
+
+	// Simplified derived state
+	let selectedLabel = $derived(
+		$formData.inquiryProtocol
+			? protocolLabels[$formData.inquiryProtocol as keyof typeof protocolLabels]
+			: 'Select a Value' // Assuming you have a placeholder message
+	);
 
 	// Animations
 	$effect(() => {
@@ -279,7 +291,7 @@
 					</Card.Header>
 					<Card.Content>
 						<p class="leading-relaxed text-muted-foreground">
-							{service.description}
+							About us {service.description}
 						</p>
 					</Card.Content>
 				</Card.Root>
@@ -308,7 +320,7 @@
 <data.stats />
 <section class="relative bg-background px-6 py-16 md:px-12 md:py-24" id="partners">
 	<div class="mb-12 border-l-4 border-primary pl-5 md:mb-16">
-		<h2 class="text-3xl uppercase md:text-4xl">Our Partners</h2>
+		<h2 class="text-3xl uppercase md:text-4xl">{m.keen_low_jan_pop()}</h2>
 		<p class="mt-2 text-sm text-muted-foreground md:text-base">
 			{m.due_free_kangaroo_kiss()}
 		</p>
@@ -321,10 +333,10 @@
 	<div class="grid w-full max-w-5xl grid-cols-1 gap-12 lg:grid-cols-5">
 		<div class="lg:col-span-2">
 			<h2 class="mb-4 text-4xl tracking-wider uppercase md:text-5xl">
-				{m.frail_real_otter_jump()}
+				{m.away_sleek_haddock_fall()}
 			</h2>
 			<p class="mb-6 text-muted-foreground">
-				{m.plain_mild_badger_enrich()}
+				{m.antsy_top_rooster_transform()}
 			</p>
 
 			{#if $message}
@@ -380,7 +392,7 @@
 					<Field.Label class="text-xs uppercase">{m.smart_orange_tiger_tap()}</Field.Label>
 					<Select.Root type="single" name="inquiryProtocol" bind:value={$formData.inquiryProtocol}>
 						<Select.Trigger class="h-10 {input_class}">
-							{$formData.inquiryProtocol || 'Select Protocol...'}
+							{selectedLabel}
 						</Select.Trigger>
 						<Select.Content>
 							<Select.Item value="export">{m.even_early_halibut_pat()}</Select.Item>

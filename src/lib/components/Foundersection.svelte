@@ -1,5 +1,37 @@
+<script lang="ts">
+	import { getLocale } from '$lib/paraglide/runtime';
+
+	// Translation Dictionary
+	const t = {
+		ar: {
+			label: 'التوريد العالمي',
+			title: 'تأمين الرابط الصناعي',
+			quote:
+				'نحن لا نقوم بمجرد نقل المواد؛ نحن نؤمن القواعد الكيميائية لإنتاجكم. في الأسواق المتقلبة، أبيكو العالمية هي الثابت.',
+			description:
+				'تأسست أبيكو العالمية لتوفير رابط مباشر بين مختبرات التصنيع العالمية والتصنيع الإقليمي، وقد تطورت لتصبح وكالة رائدة في قطاعات الأغذية والعطور ومستحضرات التجميل. نحن متخصصون في الخدمات اللوجستية المعقدة للمركبات الخام، لضمان مطابقة كل جرام يتم تسليمه لمواصفاتكم الدقيقة.',
+			stats: ['وكالات مباشرة', 'مصادر توريد', 'طن متري / سنوياً', 'تدقيق دفعات الإنتاج'],
+			role: '[المؤسس والرئيس التنفيذي]'
+		},
+		en: {
+			label: 'Global Procurement',
+			title: 'Securing the Industrial Link',
+			quote:
+				'We do not simply move materials; we secure the chemical foundations of your production. In unpredictable markets, Appico World is the constant.',
+			description:
+				'Established to provide a direct link between global synthesis labs and regional manufacturing, Appico World has evolved into a premier agency for the Food, Fragrance, and Cosmetic industries. We specialize in the high-stakes logistics of raw compounds, ensuring every gram delivered meets your exact specifications.',
+			stats: ['Direct Agencies', 'Supply Origins', 'Metric Tons / Annum', 'Batch Audited'],
+			role: '[Founder & CEO]'
+		}
+	};
+
+	// Helper to get active content
+	let content = $derived(getLocale() === 'ar' ? t.ar : t.en);
+</script>
+
 <section
 	class="mx-auto grid max-w-300 grid-cols-1 items-center gap-10 px-6 py-16 md:grid-cols-2 md:gap-15 md:px-12.5 md:py-25"
+	dir={getLocale() === 'ar' ? 'rtl' : 'ltr'}
 >
 	<div
 		class="anim-slide-right relative order-2 mt-8 grid grid-cols-1 gap-5 border border-border p-6 sm:grid-cols-2 md:order-1 md:mt-16 md:p-7.5"
@@ -11,7 +43,7 @@
 			<span class="block text-3xl font-bold text-foreground md:text-[2.5rem]">15+</span>
 			<span
 				class="mt-1 block text-sm font-semibold tracking-wider text-primary uppercase md:text-base"
-				>Global Agencies</span
+				>{content.stats[0]}</span
 			>
 		</div>
 
@@ -21,7 +53,7 @@
 			<span class="block text-3xl font-bold text-foreground md:text-[2.5rem]">40</span>
 			<span
 				class="mt-1 block text-sm font-semibold tracking-wider text-primary uppercase md:text-base"
-				>Partner Nations</span
+				>{content.stats[1]}</span
 			>
 		</div>
 
@@ -31,7 +63,7 @@
 			<span class="block text-3xl font-bold text-foreground md:text-[2.5rem]">8.5k</span>
 			<span
 				class="mt-1 block text-sm font-semibold tracking-wider text-primary uppercase md:text-base"
-				>Tons / Annum</span
+				>{content.stats[2]}</span
 			>
 		</div>
 
@@ -41,7 +73,7 @@
 			<span class="block text-3xl font-bold text-foreground md:text-[2.5rem]">100%</span>
 			<span
 				class="mt-1 block text-sm font-semibold tracking-wider text-primary uppercase md:text-base"
-				>Compliance</span
+				>{content.stats[3]}</span
 			>
 		</div>
 
@@ -50,21 +82,19 @@
 	</div>
 
 	<div class="anim-slide-left order-1 md:order-2">
-		<h4 class="font-bold tracking-widest text-primary uppercase">Corporate Trajectory</h4>
+		<h4 class="font-bold tracking-widest text-primary uppercase">{content.label}</h4>
 		<h2 class="mb-3 text-3xl leading-tight font-bold md:mb-2.5 md:text-[2.5rem]">
-			The Standard of Purity
+			{content.title}
 		</h2>
 		<p class="mb-5 text-lg italic opacity-90 md:text-[1.1rem]">
-			"We don't just trade commodities; we engineer the supply chain. In an industry defined by
-			volatility, Appico World provides the constant."
+			"{content.quote}"
 		</p>
 		<p class="text-base leading-relaxed text-muted-foreground">
-			Established to bridge the gap between European synthesis labs and Middle Eastern industrial
-			manufacturing, Appico World has evolved into a premier commercial agency.
+			{content.description}
 		</p>
 
 		<div class="mt-8 text-xs font-bold tracking-[2px] md:text-[0.9rem]">
-			// Wabel Ataya <span class="font-normal text-muted-foreground">[CEO&Founder]</span>
+			// وابل عطايا <span class="font-normal text-muted-foreground">{content.role}</span>
 		</div>
 	</div>
 </section>
