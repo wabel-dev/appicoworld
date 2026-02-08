@@ -291,7 +291,7 @@
 					</Card.Header>
 					<Card.Content>
 						<p class="leading-relaxed text-muted-foreground">
-							About us {service.description}
+							{service.description}
 						</p>
 					</Card.Content>
 				</Card.Root>
